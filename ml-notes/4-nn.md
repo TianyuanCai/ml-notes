@@ -1,4 +1,3 @@
-
 # Deep Learning
 
 ## Hyperparameters
@@ -43,8 +42,7 @@ By stacking Autoencoders to learn the representation of data, and train it greed
 
 A VAE is an autoencoder whose encodings distribution is **regularised** during the training in order to ensure that its latent space has good properties allowing us to generate some new data. Moreover, the term “variational” comes from the close relationship there is between the regularisation and the variational inference method in statistics.
 
-* The input is encoded as a distribution over the latent space
-* A point from the latent space is sampled from that distribution
-* The sampled point is decoded and the reconstruction error can be computed
-* The reconstruction error is backpropagated through the network
-
+- The input is encoded as a distribution over the latent space
+- A point from the latent space is sampled from that distribution
+- The sampled point is decoded and the reconstruction error can be computed
+- The reconstruction error is backpropagated through the network

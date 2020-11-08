@@ -1,4 +1,3 @@
-
 # Reinforcement Learning
 
 ## Multi-armed Bandit
@@ -12,4 +11,3 @@ Epsilon Greedy
 Temporal Difference -> Monte Carlo simulations
 
 ## Product Applications
-
