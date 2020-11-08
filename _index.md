@@ -1,4 +1,4 @@
 ---
 bookCollapseSection: true
-draft: true
+draft: false
 ---
