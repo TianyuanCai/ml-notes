@@ -299,36 +299,35 @@ Be careful merging data of different scopes!
 - Apply the change to a new group of users who’ve just completed lazy signup. Intuition - Expose them to the changes and see whether they convert within a given period.
 
 * Time spent / user attention
-
   * Session length
-  - Duration of impressions
-  - Number of impressions that is longer than 3 seconds
-  - Impressions: 20-second impression for reading a post Metrics by product areas
-- Any pages
-  - Click-through rate (on a given content)
-  - Bounce Rate
-- Content Quality
-  - Click-through rate
-  - Answers: Click-through \& Upvote/Bookmark/Share rate
-  - Questions: Click-through \& Follow/Share/Request rate
-  - Upvotes/downvotes (only downvotes for questions)
-  - Bounce Rate
-  - Number of edits
-  - View count
-- Item Quality
-  - \# Merged questions
-  - Ask frequency
-  - Answer requests
-  - Follower number
-  - Unique visitors / read count
-  - Number of answers
-  - Number of sent notifications for related users
-  - Number of topic to which a question belongs
-- General
-  - Number of Inbound and Outbound links
-- Users
-  - Number of pages viewed
-  - Session duration
+  * Duration of impressions
+  * Number of impressions that is longer than 3 seconds
+  * Impressions: 20*second impression for reading a post Metrics by product areas
+* Any pages
+  * Click*through rate (on a given content)
+  * Bounce Rate
+* Content Quality
+  * Click*through rate
+  * Answers: Click*through \& Upvote/Bookmark/Share rate
+  * Questions: Click*through \& Follow/Share/Request rate
+  * Upvotes/downvotes (only downvotes for questions)
+  * Bounce Rate
+  * Number of edits
+  * View count
+* Item Quality
+  * \# Merged questions
+  * Ask frequency
+  * Answer requests
+  * Follower number
+  * Unique visitors / read count
+  * Number of answers
+  * Number of sent notifications for related users
+  * Number of topic to which a question belongs
+* General
+  * Number of Inbound and Outbound links
+* Users
+  * Number of pages viewed
+  * Session duration
 
 ### Common Biases
 
