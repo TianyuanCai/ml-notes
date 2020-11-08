@@ -290,7 +290,7 @@ Be careful merging data of different scopes!
 - User growth
   - Hard to measure or negligible ones:
     - Customer acquisition cost, LTV, Payback period
-  * Activation rate
+  - Activation rate
 
 #### Engagement
 
