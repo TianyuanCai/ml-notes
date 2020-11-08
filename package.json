@@ -28,8 +28,7 @@
   },
   "lint-staged": {
     "*.md": [
-      "npx prettier --parser markdown --write",
-      "git add"
+      "npx prettier --parser markdown --write"
     ]
   }
 }
