@@ -3,6 +3,9 @@ title: Reinforcement Learning
 weight: 5
 ---
 
+<!-- Just need a katex comment to generate katex -->
+
+{{< katex >}} {{< /katex >}}
 
 # Reinforcement Learning
 

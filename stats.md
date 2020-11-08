@@ -7,6 +7,10 @@ weight: 2
 
 ## Hypothesis Testing
 
+<!-- Just need a katex comment to generate katex -->
+
+{{< katex >}} {{< /katex >}}
+
 [CI and Proportion Test](http://www.stat.yale.edu/Courses/1997-98/101/catinf.htm)
 
 - Normal/Student’s t

@@ -2,6 +2,9 @@
 title: Machine Learning
 weight: 3
 ---
+<!-- Just need a katex comment to generate katex -->
+
+{{< katex >}} {{< /katex >}}
 
 # Machine Learning
 

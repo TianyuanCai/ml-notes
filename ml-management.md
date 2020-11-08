@@ -2,6 +2,9 @@
 title: Manage ML Process
 weight: 10
 ---
+<!-- Just need a katex comment to generate katex -->
+
+{{< katex >}} {{< /katex >}}
 
 # Manage ML Process
 

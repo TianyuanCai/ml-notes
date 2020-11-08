@@ -2,6 +2,9 @@
 title: Information Theory
 weight: 6
 ---
+<!-- Just need a katex comment to generate katex -->
+
+{{< katex >}} {{< /katex >}}
 
 # Information Theory
 
