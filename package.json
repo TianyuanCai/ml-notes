@@ -28,7 +28,7 @@
   },
   "lint-staged": {
     "*.md": [
-      "npx prettier --parser markdown --write --print-width 80"
+      "npx prettier --parser markdown --write --prose-wrap always"
     ]
   }
 }
