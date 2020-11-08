@@ -22,9 +22,13 @@
     "prettier": "^2.1.2",
     "pretty-quick": "^3.1.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+  "scripts": {
+  "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.md": [
+      "prettier --parser markdown --write",
+      "git add"
+    ]
   }
 }
