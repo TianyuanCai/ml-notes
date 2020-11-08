@@ -1,5 +1,6 @@
 ---
 title: Statistics
+weight: 2
 ---
 
 # Statistics/Probability

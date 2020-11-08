@@ -1,5 +1,6 @@
 ---
 title: Machine Learning
+weight: 3
 ---
 
 # Machine Learning

@@ -1,5 +1,6 @@
 ---
 title: Information Theory
+weight: 6
 ---
 
 # Information Theory
