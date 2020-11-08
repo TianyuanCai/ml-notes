@@ -298,8 +298,9 @@ Be careful merging data of different scopes!
 
 - Apply the change to a new group of users who’ve just completed lazy signup. Intuition - Expose them to the changes and see whether they convert within a given period.
 
-- Time spent / user attention
-  - Session length
+* Time spent / user attention
+
+  * Session length
   - Duration of impressions
   - Number of impressions that is longer than 3 seconds
   - Impressions: 20-second impression for reading a post Metrics by product areas
