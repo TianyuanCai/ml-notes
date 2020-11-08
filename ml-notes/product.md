@@ -1,3 +1,7 @@
+---
+title: Product
+---
+
 # Product
 
 <!-- Just need a katex comment to generate katex -->

@@ -1,3 +1,7 @@
+---
+title: Information Theory
+---
+
 # Information Theory
 
 ## Common Metrics

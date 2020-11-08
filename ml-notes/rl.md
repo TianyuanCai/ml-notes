@@ -1,3 +1,8 @@
+---
+title: Reinforcement Learning
+---
+
+
 # Reinforcement Learning
 
 ## Multi-armed Bandit

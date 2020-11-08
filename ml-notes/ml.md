@@ -1,3 +1,7 @@
+---
+title: Machine Learning
+---
+
 # Machine Learning
 
 ## Learning Theory

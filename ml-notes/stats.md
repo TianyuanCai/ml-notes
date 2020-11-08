@@ -1,3 +1,7 @@
+---
+title: Statistics
+---
+
 # Statistics/Probability
 
 ## Hypothesis Testing

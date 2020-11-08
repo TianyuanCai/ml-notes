@@ -1,3 +1,7 @@
+---
+title: Manage ML Process
+---
+
 # Manage ML Process
 
 ## Project Structures
