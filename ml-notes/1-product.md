@@ -340,7 +340,7 @@ Click-through rate/probability
 - CTR usually measure the visibility(button in our example)
   - Total number of clicks/person = 5/2 = 2.5
 - CTP measures the impact. CTP will avoid the problem when users click more than once. CTP can be acquired when working with engineers, to capture the number of clicks every change, and get CTR with at least one click.
-  - At least one/person = 0.5
+  - tst At least one/person = 0.5
 
 #### Ranks
 
