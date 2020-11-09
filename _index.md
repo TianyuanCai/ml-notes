@@ -1,7 +1,7 @@
 ---
 bookCollapseSection: true
-draft: true
 title: ML Notes
+draft: true
 ---
 
 # Machine Learning Study Notes

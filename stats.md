@@ -1,6 +1,7 @@
 ---
 title: Statistics
 weight: 2
+draft: true
 ---
 
 # Statistics/Probability
