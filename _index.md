@@ -4,6 +4,7 @@ title: ML Notes
 draft: true
 ---
 
-# Machine Learning Study Notes
+# Machine Learning Cheat Sheet
 
-I am sharing my machine learning notes here to continue documenting my learning and collaborate with other on the same path. Feel free to contribute using the _edit_ link at the bottom of each page. All mistakes are my own.
+In an effort to not to search the same thing twice, I tried to jot down my learning and file them to the right folder whenever I have a question about machine learning. The result is this cheatsheet.
+

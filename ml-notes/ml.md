@@ -1,52 +1,54 @@
 ---
 title: Machine Learning
 weight: 3
-draft: true
+draft: false
 ---
 <!-- Just need a katex comment to generate katex -->
 
-{{< katex >}} {{< /katex >}}
+{< katex >} {< /katex >}
+
+In an effort to not to search the same thing twice, I tried to jot down my learning and file them to the right folder whenever I have a question about machine learning. The result is this cheatsheet.
+
+The content and explainability of this document will grow as I learn over time. 
+
+What is an interesting way to learn ML?
 
 # Machine Learning
 
 ## Learning Theory
 
-Learning is the gap between seeing everything and learning by a subset.
-
-### General Resources
-
-[CS229 Notes on Learning Theory](http://cs229.stanford.edu/notes/cs229-notes4.pdf)
+Much of the notes in here come from my learning in Prof. Yaron Singer’s CS183 Foundations of Machine Learning course at Harvard and Prof. Shai Ben-David’s online course based on his book “Understanding Machine Learning: From Theory to Algorithms” ([PDF](https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf))
 
 ### PAC Learnability
 
-General idea is to upper-bound the probability of observing an unusual training set. Only when the training set does not generalize well to the test set do we get an error greater than $\epsilon$.
+General idea is to upper-bound the probability of observing an unusual training set. Only when the training set does not generalize well to the test set do we get an error greater than $epsilon$.
 
-For a set of $m$ examples, a surprising training set appears when we did not observe any of the $\epsilon$ possible surprising observations. The chance of that happening is $(1-\epsilon)^m$.
+For a set of $m$ examples, a surprising training set appears when we did not observe any of the $epsilon$ possible surprising observations. The chance of that happening is $(1-epsilon)^m$.
 
 PAC in Realizable Setting
 
-$P[L_D(h)>\epsilon]<\delta$
+$P[L\_D(h)\>epsilon]\<delta$
 
 Proof of Agnostic PAC with Hoeffding Bound
 
-$P[|L_D(h)-L_S(h)|>\epsilon]<\delta$
+$P[|L\_D(h)-L\_S(h)|\>epsilon]\<delta$
 
 Interchangeable Expressions of PAC Learnability
 
-$P[L_D(A(S))>\epsilon]<\delta$
+$P[L\_D(A(S))\>epsilon]\<delta$
 
-$E_{m\rightarrow\infty}[L_D(A(S))]=0$
+$E\_{mrightarrowinfty}[L\_D(A(S))]=0$
 
-Notation $m_H(\frac{1}{8}, \frac{1}{8})$ means the minimum number of samples needed to learn with an error rate $\frac{1}{8}$ with a probability of failure of of $\frac{1}{8}$.
+Notation $m\_H(frac18, frac18)$ means the minimum number of samples needed to learn with an error rate $frac18$ with a probability of failure of $frac18$.
 
 Relationships
 
-Learnable – there exists a learning algorithm for it, such as ERM.
+Learnable — there exists a learning algorithm for it, such as ERM.
 
 - PAC Learnable
   - Threshold function
   - Agnostic PAC Learnable
-    - Every finite hypothesis is agnostic PAC learnable
+	- Every finite hypothesis is agnostic PAC learnable?
   - Learnable by ERM
 - H of all function over an infinite domain, not learnable (No free lunch theorem)
 
@@ -62,7 +64,7 @@ The VC dimension is a measure of the ability of a (binary) classifier to separat
 
 A hypothesis class can shatter a set of n points if it contains a function that can generate all $2^n$ possible binary labelings of those points correctly (i.e. if it can classify every point in the set correctly, no matter how we label them).
 
-The VC dimension of a hypothesized class is defined to be the largest n such that we can find at least one set of n points it shatters, but no set of n+1 points that it shatters. This is how we can prove the VC Dimension of a hypothesis class $\mathcal{H}$.
+The VC dimension of a hypothesized class is defined to be the largest n such that we can find at least one set of n points it shatters, but no set of n+1 points that it shatters. This is how we can prove the VC Dimension of a hypothesis class $mathcal{H}$.
 
 If you have n data points, you have 2^n possible labelings. For each of these labelings, if you can draw a function from your function family that separates the labels, then the set of n points is said to have been shattered by your family of functions. The maximum n which you can shatter is the VC dimension, h, of your function family.
 
@@ -78,18 +80,18 @@ VC Dim of Common Hypothesis Classes
 
 Circles in $R^2$ - 3
 
-Given unit vector $\mathbf{e}$ in each dimension, then the circle centered at $\sum_{f(\mathbf{e_i})=+1}{\mathbf{e}}$ can correctly classify all unit vector and the origin.
+Given unit vector $mathbf{e}$ in each dimension, then the circle centered at $sum\_{f(mathbf{e\_i})=+1}{mathbf{e}}$ can correctly classify all unit vector and the origin.
 
 - If the origin has negative label, set the length of the circle to be less than 1
-- Otherwise, equal to $\sqrt{\sum_{f(\mathbf{e_i})=+1}{\mathbf{e^2}}}$.
+- Otherwise, equal to $sqrt{sum\_{f(mathbf{e\_i})=+1}{mathbf{e^2}}}$.
 
 We can also achieve this proof by giving an example of three non-collinear points and discuss the three possible configurations of labels, one, two, or three positive labels.
 
-Now, we also need to prove that the hypothesis class cannot correctly classify 4 points. There are three possible ways for the data to be laid out – When the convex hull of the four points
+Now, we also need to prove that the hypothesis class cannot correctly classify 4 points. There are three possible ways for the data to be laid out — When the convex hull of the four points
 
 - form a quadrilateral – would misclassify one of the negative points when two diagonal points are positive.
 - form a triangle – would misclassify the point within the convex hull when that’s the only negative point.
-- form a line – would misclassify if every other point on the line is positive.
+- form a line — would misclassify if every other point on the line is positive.
 
 The idea of Convex Hull can be used to discuss the shape formed by hypothesis class.
 
@@ -97,26 +99,26 @@ Triangle – 7
 
 Halfspace in $R^d$ – d + 1
 
-$\text{sign}(\mathbf{w}^\top\mathbf{x}+b)\Leftrightarrow\mathbf{w}^\top\mathbf{x}+b>0$
+$text{sign}(mathbf{w}^topmathbf{x}+b)Leftrightarrowmathbf{w}^topmathbf{x}+b\>0$
 
-For instance, in $R^2$, we only need a function $wx+b>0$ to test for labels.
+For instance, in $R^2$, we only need a function $wx+b\>0$ to test for labels.
 
 Infinite VCdim means not PAC learnable
 
-Assume b.w.o.c that such H is PAC Learnable, then for some $m$, we have $P[L_D(A(S))>\epsilon]<\delta$. Consider $m_H(\frac{1}{8}, \frac{1}{8})$, we should be able to find an $m$ to achieve $P[L_D(A(S))>\epsilon]<\delta$.
+Assume b.w.o.c that such H is PAC Learnable, then for some $m$, we have $P[L\_D(A(S))\>epsilon]\<delta$. Consider $m\_H(frac{1}{8}, frac{1}{8})$, we should be able to find an $m$ to achieve $P[L\_D(A(S))\>epsilon]\<delta$.
 
-By $\text{VCdim}(H)=\infty$, there exists some $w\subset X$ s.t. H shatters W and $|W|>2m_H(\frac{1}{8}, \frac{1}{8})$. There is no upperbound to the size of the set we can shatter.
+By $text{VCdim}(H)=infty$, there exists some $wsubset X$ s.t. H shatters W and $|W|\>2m\_H(frac{1}{8}, frac{1}{8})$. There is no upperbound to the size of the set we can shatter.
 
-Therefore, we have a shattered set that’s bigger than the size $m$ needed to be PAC learnable. If $w$ can be shattered, H induces every possible functions from $W$ to {0, 1}. But by NFL theorem, in such a condition, $m_H(\frac{1}{8}, \frac{1}{8})\geq |w|/2\geq m_H(\frac{1}{8}, \frac{1}{8})$. Contradiction.
+Therefore, we have a shattered set that’s bigger than the size $m$ needed to be PAC learnable. If $w$ can be shattered, H induces every possible functions from $W$ to {0, 1}. But by NFL theorem, in such a condition, $m\_H(frac{1}{8}, frac{1}{8})geq |w|/2geq m\_H(frac{1}{8}, frac{1}{8})$. Contradiction.
 
 If the VC dimension is large, we need a large sample size to learn. VC dimension measures the capacity for classifying all possible behaviors in a sample space. NFL then quantifies the difficulty with learning all possible behaviors.
 
 ### [No-Free-Lunch Theorem](https://www.youtube.com/watch?v=taA3r7378gU&list=PLPW2keNyw-usgvmR7FTQ3ZRjfLs5jT4BO&t=664s)
 
-For a set of $m$ examples, and let H be **all** functions from X to $\{0, 1\}$. $m_H(\frac{1}{8}, \frac{1}{8})\geq\frac{\|X\|}{2}$. No algorithm can successfully learn H for the given error rate without seeing at least half of all data. This is almost just memorization, and it’s impossible for H with an infinite VC dimension to learn it.
+For a set of $m$ examples, and let H be **all** functions from X to ${0, 1}$. $m\_H(frac{1}{8}, frac{1}{8})geqfrac{|X|}{2}$. No algorithm can successfully learn H for the given error rate without seeing at least half of all data. This is almost just memorization, and it’s impossible for H with an infinite VC dimension to learn it.
 
 - There exists a hypothesis with 0 loss.
-- $P[L_D(A(S))>\frac{1}{8}]>\frac{1}{7}$
+- $P[L\_D(A(S))\>frac{1}{8}]\>frac{1}{7}$
 
 **Intuition:** In a sample with $2^m$ possible combinations of labels, There may be a good hypothesis class with 0 loss, but on average, most of the hypothesis class will perform poorly. Thus, no hypothesis class can achieve good performance on all samples.
 
@@ -125,15 +127,15 @@ Proof
 - Proof Idea –\* We want to show that on average, every learner is going to fail. We do that by estimating the probability that any given learner A will err on a random point.
 
 - The probability that a random point X is not covered by S is 0.5
-- The probability that a given $h\in H$ predicts correctly is 0.5
+- The probability that a given $hin H$ predicts correctly is 0.5
 
-Thus, if we have all the possible functions, the average performance on the data is $\frac{1}{4}$.
+Thus, if we have all the possible functions, the average performance on the data is $frac{1}{4}$.
 
 ### Fundamental Theorem of Statistical Learning
 
-For every domain X and every class H of functions from X to $\{0, 1\}$, the following statements are equivalent
+For every domain X and every class H of functions from X to ${0, 1}$, the following statements are equivalent
 
-- H has the uniform convergence property (for every pair of $\epsilon, \delta$, there is a $m(\epsilon, \delta)$ that's guaranteed to be $\epsilon$-representative)
+- H has the uniform convergence property (for every pair of $epsilon, delta$, there is a $m(epsilon, delta)$ that's guaranteed to be $epsilon$-representative)
 - ERM is a successful agnostic PAC learner for H
   (Proof of 1 to 2 goes back to proving agnostic PAC using UC property)
 - H is agnostic PAC learnable
@@ -159,19 +161,19 @@ Note that the learning rate doesn’t matter for Perceptron. Prove by induction.
 
 #### Stochastic Gradient Descent
 
-for i in range(iterations_count):
+for i in range(iterations\_count):
 
-param_gradients = evaluate_gradients(loss_function, data, params)
+param\_gradients = evaluate\_gradients(loss\_function, data, params)
 
-params -= learning_rate \* param_gradients
+params -= learning\_rate \* param\_gradients
 
 #### Stochastic gradient descent with momentum
 
 moment = 0
 
-for i in range(iterations_count):
+for i in range(iterations\_count):
 
-param_gradients = evaluate_gradients(loss_function, data, params)
+param\_gradients = evaluate\_gradients(loss\_function, data, params)
 
 ```python
 moment = gamma * moment + param_gradients
@@ -231,9 +233,9 @@ for step in range(iterations_count):
 
 This incorporates all the nice features of RMSProp and Gradient descent with momentum.
 
-Specifically, this algorithm calculates an exponential moving average of gradients and the squared gradients whereas parameters $\beta_1$ and $\beta_2$ control the decay rates of these moving averages.
+Specifically, this algorithm calculates an exponential moving average of gradients and the squared gradients whereas parameters $beta\_1$ and $beta\_2$ control the decay rates of these moving averages.
 
-Notice that we’ve initialized second_moment to zero. So, in the beginning, second_moment would be calculated as somewhere very close to zero. Consequently, we are updating parameters by dividing with a very small number and hence making large updates to the parameter. That means initially, the algorithm would make larger steps. To rectify that we create an unbiased estimate of those first and second moment by incorporating the current step. And then we make updates to parameters based on these unbiased estimates rather than first and second moments.
+Notice that we’ve initialized second\_moment to zero. So, in the beginning, second\_moment would be calculated as somewhere very close to zero. Consequently, we are updating parameters by dividing with a very small number and hence making large updates to the parameter. That means initially, the algorithm would make larger steps. To rectify that we create an unbiased estimate of those first and second moment by incorporating the current step. And then we make updates to parameters based on these unbiased estimates rather than first and second moments.
 
 #### Summary
 
@@ -259,10 +261,10 @@ I start with the non-interactive ones in R, first `summary tools` followed by `d
 - Scale, standardize, normalize
   - For instance, many elements used in the objective function of a learning algorithm (such as the RBF kernel of Support Vector Machines or the l1 and l2 regularizers of linear models) assume that all features are centered around zero and have variance in the same order. If a feature has a variance that is orders of magnitude larger than others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.
   - TL;DR
-    - Use MinMaxScaler as your default
-    - Use RobustScaler if you have outliers and can handle a larger range
-    - Use StandardScaler if you need normalized features
-    - Use Normalizer sparingly - it normalizes rows, not columns
+	- Use MinMaxScaler as your default
+	- Use RobustScaler if you have outliers and can handle a larger range
+	- Use StandardScaler if you need normalized features
+	- Use Normalizer sparingly - it normalizes rows, not columns
 - Normalization
   - The L1 norm is calculated as the sum of the absolute values of the vector.
   - The L2 norm is calculated as the square root of the sum of the squared vector values.
@@ -288,14 +290,14 @@ kNN
 
 ## Other Common Topics
 
-### Dimension Reduction Techniques
+## Dimension Reduction
 
 - By constraining or shrinking the estimated coefficients, we can often substantially reduce the variance at the cost of a negligible increase in bias. This can lead to substantial improvements in the accuracy with which we can predict the response for observations not used in model training.
 - Irrelevant variables lead to unnecessary complexity in the resulting model.
 
 ### Regression in high dimension
 
-When p>n, regardless of whether or not there truly is a relationship between the features and the response, least-squares will yield a set of coefficient estimates that result in a perfect fit to the data, such that the residuals are zero. This is problematic because this perfect fit will almost certainly lead to overfitting of the data.
+When p\>n, regardless of whether there truly is a relationship between the features and the response, least-squares will yield a set of coefficient estimates that result in a perfect fit to the data, such that the residuals are zero. This is problematic because this perfect fit will almost certainly lead to overfitting of the data.
 
 - regularization or shrinkage plays a key role in high-dimensional problems,
 - appropriate tuning parameter selection is crucial for good predictive performance, and
@@ -303,7 +305,7 @@ When p>n, regardless of whether or not there truly is a relationship between the
 
 Adding noise features that are not truly associated with the response will lead to a deterioration in the fitted model, and consequently an increased test set error. This is because noise features increase the dimensionality of the problem, exacerbating the risk of overfitting (since noise features may be assigned nonzero coefficients due to chance associations with the response on the training set) without any potential upside in terms of improved test set error. Thus, we see that new technologies that allow for the collection of measurements for thousands or millions of features are a double-edged sword: they can lead to improved predictive models if these features are relevant to the problem at hand, but will lead to worse results if the features are not relevant. Even if they are relevant, the variance incurred in fitting their coefficients may outweigh the reduction in bias that they bring.
 
-### Subset Selection
+## Subset Selection
 
 This approach involves identifying a subset of the p predictors that we believe to be related to the response. We then fit a model using least-squares on the reduced set of variables.
 
@@ -311,7 +313,7 @@ This approach involves identifying a subset of the p predictors that we believe 
 
 - Computationally cheaper than best subset selection. Can be applied in settings where p is too large to apply the best subset selection.
 - Not guaranteed to yield the best model containing a subset of the p predictors. For instance, suppose that in a given data set with p = 3 predictors, the best possible one-variable model contains X1, and the best possible two-variable model instead contains X2 and X3. Then forward stepwise selection will fail to select the best possible two-variable model, because M1 will contain X1, so M2 must also contain X1 together with one additional variable.
-- p \& n: Backward selection requires that the number of samples n is larger than the number of variables p (so that the full model can be fit). In contrast, forward stepwise can be used even when n ? p, and so is the only viable subset method when p is very large.
+- p & n: Backward selection requires that the number of samples n is larger than the number of variables p (so that the full model can be fit). In contrast, forward stepwise can be used even when n ? p, and so is the only viable subset method when p is very large.
 - Hybrid: Variables are added to the model sequentially, in analogy to forward selection. However, after adding each new variable, the method may also remove any variables that no longer provide an improvement in the model fit. Such an approach attempts to more closely mimic best subset selection while retaining the computational advantages of forwarding and backward stepwise selection.
 
 ### Best subset selection
@@ -323,58 +325,57 @@ This approach involves identifying a subset of the p predictors that we believe 
 
 ### Regularization
 
-- Standardize!
-
 #### Bias-variance trade-off
 
 The main motivation for regularization: Bias-variance trade-off.
 
 Models with a lower bias in parameter estimation have a higher variance of the parameter estimates across samples, and vice versa.
 
-This approach involves fitting a model involving all p predictors. However, the estimated coefficients are shrunk towards zero relatives to the least-squares estimates. This shrinkage (also known as regularization) has the effect of reducing variance, and therefore improve the fit. Depending on what type of shrinkage is performed, some of the coefficients may be estimated to be exactly zero. Hence, shrinkage methods can also perform variable selection.
+This approach involves fitting a model involving all p predictors. However, the estimated coefficients are shrunk towards zero relatives to the least-squares estimates. This shrinkage (also known as regularization) has the effect of reducing variance, and therefore improve the fit. Depending on what type of shrinkage is performed, some coefficients may be estimated to be exactly zero. Hence, shrinkage methods can also perform variable selection.
 
 #### Lasso, L1 Regularization
 
 - As with ridge regression, the lasso shrinks the coefficient estimates towards zero.
-- Lasso’s L1 penalty has the effect of forcing some of the coefficient estimates to be exactly equal to zero when the tuning parameter $\lambda$ is sufficiently large. So, lasso also performs variable selection.
+- Lasso’s L1 penalty has the effect of forcing some coefficient estimates to be exactly equal to zero when the tuning parameter $lambda$ is sufficiently large. So, lasso also performs variable selection.
 - Therefore, models generated from the lasso are generally much easier to interpret than those produced by ridge regression. We say that the lasso yields sparse models—that is, models that involve only a subset of the variables.
 - Use cross validation to select $lambda$
+- Tends to do well when only a few predictors influence the response.
+- Does variable selection.
 
 #### Ridge, L2 Regularization
 
-The value of $\beta X$ is affected by the scaling of predictors. Therefore, all variables should be scaled by their standard deviation.
+The value of $beta X$ is affected by the scaling of predictors. Therefore, all variables should be scaled by their standard deviation.
 
-- As $\lambda$ increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias. As $\lambda$ increases, the shrinkage of the ridge coefficient estimates leads to a substantial reduction in the variance of the predictions, at the expense of a slight increase in bias.
+- As $lambda$ increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias. As $lambda$ increases, the shrinkage of the ridge coefficient estimates leads to a substantial reduction in the variance of the predictions, at the expense of a slight increase in bias.
 - In general, in situations where the relationship between the response and the predictors is close to linear, the least-squares estimates will have low bias but may have high variance. This means that a small change in the training data can cause a large change in the least-squares coefficient estimates. In particular, when the number of variables p is almost as large as the number of observations n. Hence, ridge regression works best in situations where the least-squares estimates have high variance.
   - models with a lower bias in parameter estimation have a higher variance of the parameter estimates across samples, and vice versa.
 - Advantage: Computational efficiency over best subset selection.
 - Disadvantage: Ridge regression will include all p predictors in the final model. The penalty factor will set them towards 0 but not exactly 0. Lasso overcomes this.
-
-#### Lasso, Ridge, Elastic Net ($\Lambda$)
-
-##### Lasso
-
-- Tends to do well when only a few predictors influence the response.
-- Does variable selection.
-
-##### Ridge
-
 - Works well if most predictors impact the response.
 - Does not do the variable selection.
 
 ##### Elastic Net
 
 - Lasso and ridge are computationally feasible alternatives to best subset selection that replace the intractable form of the budget in (6.10) with forms that are much easier to solve. Of course, the lasso is much more closely related to best subset selection, since only the lasso performs feature selection for s sufficiently small.
-- Cross-validation provides a simple way to tackle this problem. We choose a grid of $\lambda$ values and compute the cross-validation error for each value of $\lambda$
+- Cross-validation provides a simple way to tackle this problem. We choose a grid of $lambda$ values and compute the cross-validation error for each value of $lambda$
 
-### Distance Metrics
+## Distance Metrics
 
 - Euclidean
-  - Applications: kNN, kMeans
+	  - Applications: kNN, kMeans
 - Cosine
-  - Application
-    - The cosine similarity is most commonly used in high-dimensional positive spaces. For example, in information retrieval and text mining, each term is notionally assigned a different dimension and a document is characterized by a vector where the value in each dimension corresponds to the number of times the term appears in the document. Cosine similarity then gives a useful measure of how similar two documents are likely to be in terms of their subject matter.
-    - We can create vector data in a manner that can be used to retrieve information when queried. Once the unstructured data is transformed into vector form, we can use the cosine similarity metric to filter out the irrelevant documents from the corpus.
+	  - Application
+		- The cosine similarity is most commonly used in high-dimensional positive spaces. For example, in information retrieval and text mining, each term is notionally assigned a different dimension and a document is characterized by a vector where the value in each dimension corresponds to the number of times the term appears in the document. Cosine similarity then gives a useful measure of how similar two documents are likely to be in terms of their subject matter.
+		- We can create vector data in a manner that can be used to retrieve information when queried. Once the unstructured data is transformed into vector form, we can use the cosine similarity metric to filter out the irrelevant documents from the corpus.
+- Cosine vs Euclidean
+	  - Cosine similarity is a metric used to determine how similar the documents are irrespective of their size.
+	  - When plotted on a multi-dimensional space, where each dimension corresponds to a word in the document, the cosine similarity captures the orientation (the angle) of the documents and not the magnitude. If you want the magnitude, compute the Euclidean distance instead.
+	  - The cosine similarity is advantageous because even if the two similar documents are far apart by the Euclidean distance because of the size (like, the word ‘cricket’ appeared 50 times in one document and 10 times in another) they could still have a smaller angle between them. Smaller the angle, the higher the similarity.
+	  - Intuition: direction and magnitude.
+		- Direction: "preference" / "style" / "sentiment" / "latent variable" of the vector,
+		- Magnitude: how strong it is towards that direction.
+		- When classifying documents we'd like to categorize them by their overall sentiment, so we use the angular distance.
+		- Euclidean distance is susceptible to documents being clustered by their L2-norm (magnitude, in the 2-dimensional case) instead of direction, i.e. vectors with quite different directions would be clustered because their distances from the origin are similar.
 
 ```python
 corpus = [
@@ -397,47 +398,39 @@ Results:
 ```
 
 - Edit Distance
-- Cosine vs Euclidean
-  - Cosine similarity is a metric used to determine how similar the documents are irrespective of their size.
-  - When plotted on a multi-dimensional space, where each dimension corresponds to a word in the document, the cosine similarity captures the orientation (the angle) of the documents and not the magnitude. If you want the magnitude, compute the Euclidean distance instead.
-  - The cosine similarity is advantageous because even if the two similar documents are far apart by the Euclidean distance because of the size (like, the word ‘cricket’ appeared 50 times in one document and 10 times in another) they could still have a smaller angle between them. Smaller the angle, the higher the similarity.
-  - Intuition: direction and magnitude.
-    - Direction: "preference" / "style" / "sentiment" / "latent variable" of the vector,
-    - Magnitude: how strong it is towards that direction.
-    - When classifying documents we'd like to categorize them by their overall sentiment, so we use the angular distance.
-    - Euclidean distance is susceptible to documents being clustered by their L2-norm (magnitude, in the 2-dimensional case) instead of direction, i.e. vectors with quite different directions would be clustered because their distances from the origin are similar.
+	- String and list similarity
 
-### Class Imbalance
+## Class Imbalance
 
 - An imbalance occurs when one or more classes have very low proportions in the training data as compared to the other classes. Imbalance can be present in any data set or application, and hence, the practitioner should be aware of the implications of modeling this type of data. Examples
   - Online advertising: An advertisement is presented to a viewer which creates an impression. The click-through rate is the number of times an ad was clicked on divided by the total number of impressions and tends to be very low (Richardson et al. 2007 cite a rate less than 2.4%). Pharmaceutical research: High-throughput screening is an experimental technique where large numbers of molecules (10000s) are rapidly evaluated for biological activity. Usually, only a few molecules show high activity; therefore, the frequency of interesting compounds is low. Insurance claims: Artis et al. (2002) investigated auto insurance damage claims in Spain between the years of 1993 and 1996. Of claims undergoing auditing, the rate of fraud was estimated to be approximately 22 %.
 - These results imply that the models achieve good specificity (in the Ads example, since almost no one clicks on ads) but have poor sensitivity.
 
-#### Correction Methods
+### Correction Methods
 
 - Determine alternative cutoffs
   - When there are two possible outcome categories, another method for increasing the prediction accuracy of the minority class samples is to determine alternative cutoffs for the predicted probabilities which effectively change the definition of a predicted event. The most straightforward approach is to use the ROC curve since it calculates the sensitivity and specificity across a continuum of cutoffs. Using this curve, an appropriate balance between sensitivity and specificity can be determined.
   - decreasing the cutoff for the probability of responding increases the sensitivity (at the expense of the specificity). There may be situations where the sensitivity/specificity trade-off can be accomplished without severely compromising the accuracy of the majority class (which, of course, depends on the context of the problem). First, if there is a particular target that must be met for the sensitivity or specificity, this point can be found on the ROC curve and the corresponding cutoff can be determined.
   - It is important, especially for small sample sizes, to use an independent data set to derive the cutoff.
-    - If the training set predictions are used, there is likely a large optimistic bias in the class probabilities that will lead to inaccurate assessments of the sensitivity and specificity.
-    - If the test set is used, it is no longer an unbiased source to judge model performance.
+	- If the training set predictions are used, there is likely a large optimistic bias in the class probabilities that will lead to inaccurate assessments of the sensitivity and specificity.
+	- If the test set is used, it is no longer an unbiased source to judge model performance.
   - When comparing models, assessing model performance using class membership prediction might not be the best approach because it depends on our alternative cutoffs. Instead, ROC/AUC is better for tuning and model comparison.
-- Adjusting case weights
+### Adjusting case weights
   - Many of the predictive models for classification can use case weights where each data point can be given more emphasis in the model training phase. For example, previously discussed boosting approaches to classification and regression trees can create a sequence of models, each of which applies different case weights at each iteration.
-- Up/Down-Sampling
+
+### Up/Down-Sampling
   - Instead of having the model deal with the imbalance, we can attempt to balance the class frequencies. Taking this approach eliminates the fundamental imbalance issue that plagues model training. However, if the training set is sampled to be balanced, the test set should be sampled to be more consistent with the state of nature and should reflect the imbalance so that honest estimates of future performance can be computed.
   - up-sampling in which cases from the minority classes are sampled with replacement until each class has approximately the same number.
   - It should be noted that when using modified versions of the training set, resampled estimates of model performance can become biased. For example, if the data are up-sampled, resampling procedures are likely to have the same sample in the cases that are used to build the model as well as the holdout set, leading to optimistic results. Despite this, resampling methods can still be effective at tuning the models.
-- SMOTE
-  - [smote](https://medium.com/coinmonks/smote-and-adasyn-handling-imbalanced-data-set-34f5223e167)
+- SMOTE 
+	[smote](https://medium.com/coinmonks/smote-and-adasyn-handling-imbalanced-data-set-34f5223e167)
 - Near Miss
 
 ## Modeling
 
-Starter Code to test codes
+Starter code to create a data set for testing models.
 
 ```python
-# example of grid searching key hyper-parameters for SVC
 from sklearn.datasets import make_blobs
 from sklearn.model_selection import RepeatedStratifiedKFold
 from sklearn.model_selection import GridSearchCV
@@ -455,25 +448,25 @@ X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
 
 - [Classical assumptions](https://stats.stackexchange.com/questions/149110/assumptions-to-derive-ols-estimator/149111#149111)
 - Linear relationship between independent and dependent variables.
-- [No influential outliers](\#influential outliers)
+- [No influential outliers](\\#influential outliers)
 - [NOT NEEDED](https://stats.stackexchange.com/questions/149226/does-linear-regression-assume-all-variables-predictors-and-response-to-be-mult) Multivariate normality (all variables to be multivariate normal)
   - Checked with a histogram or a Q-Q Plot. Normality can also be checked with a goodness of fit test, e.g., the Kolmogorov-Smirnov test.
   - When the data is not normally distributed a non-linear transformation (e.g., log-transformation) might fix this issue.
   - [stats.stackexchange.com/questions/148803/how-does-linear-regression-use-the-normal-distribution](https://stats.stackexchange.com/questions/148803/how-does-linear-regression-use-the-normal-distribution)
-  - [www.wikiwand.com/en/Gauss%E2%80%93Markov_theorem](https://www.wikiwand.com/en/Gauss%E2%80%93Markov_theorem)
-    - Does not require error normality to get the best OLS estimates.
+  - [www.wikiwand.com/en/Gauss%E2%80%93Markov\_theorem](https://www.wikiwand.com/en/Gauss%E2%80%93Markov_theorem)
+	- Does not require error normality to get the best OLS estimates.
 - No or little multicollinearity
 - The error terms are independent of one another. Since the error terms represent random influences, they are also centered around 0.
 
   - Violated when there is autocorrelation (Serial correlation) [link](http://www3.amherst.edu/~fwesthoff/webpost/Old/Econ_360/Econ_360-11-14-Chap.pdf)
   - Autocorrelation occurs when the residuals are not independent of each other. Autocorrelation (serial correlation) is present whenever the value of one observation’s error term allows us to predict the value of the next. Autocorrelation of the errors violates the ordinary least squares assumption that the error terms are uncorrelated, meaning that the Gauss Markov theorem does not apply and that OLS estimators are no longer the Best Linear Unbiased Estimators (BLUE).
-    - [Causes](https://en.wikibooks.org/wiki/Econometric_Theory/Serial_Correlation#Causes_of_Autocorrelation)
-    - Detection
-      - A scatterplot allows you to check for autocorrelations.
-      - $e_t = rho e_{t-1} + v_{t}$, where $v_{t}$ are independent from one another. If $rho$ does not equal to 1, there’s autocorrelation.
-    - Consequence
-      - Coefficient value will still be unbiased.
-      - Variance of the coefficient estimate’s probability distribution may be biased. The standard errors tend to be underestimated (and the t-scores overestimated) when the autocorrelations of the errors at low lags are positive.
+	- [Causes](https://en.wikibooks.org/wiki/Econometric_Theory/Serial_Correlation#Causes_of_Autocorrelation)
+	- Detection
+	  - A scatterplot allows you to check for autocorrelations.
+	  - $e\_t = rho e_t-1 + v_t$, where $v\_t$ are independent from one another. If $rho$ does not equal to 1, there’s autocorrelation.
+	- Consequence
+	  - Coefficient value will still be unbiased.
+	  - Variance of the coefficient estimate’s probability distribution may be biased. The standard errors tend to be underestimated (and the t-scores overestimated) when the autocorrelations of the errors at low lags are positive.
 
 - Homoscedasticity
   - Check using the scatter plot (meaning the residuals are equal across the regression line). Heteroscedastic:
@@ -488,24 +481,24 @@ X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
 - Con
   - It is also important to check for outliers since linear regression is sensitive to outlier effects.
   - The solution we obtain is a flat hyperplane. If the data have a curvature or nonlinear structure, then regression will not be able to identify these characteristics.
-    - Curvature in the predicted-versus-residual plot is a primary indicator that the underlying relationship is not linear. The larger the number of original predictors, the less practical including some transformations becomes. Taking this approach can cause the data matrix to have more predictors than observations, and we then again cannot invert the matrix.
-  - Cannot invert the matrix when $p>n$
-    - If $n>>p$, least-squares estimates tend to also have low variance, and hence will perform well on test observations.
-    - If n is not much larger than p, then there can be a lot of variability in the least-squares fit, resulting in overfitting and consequently poor predictions on future observations not used in model training.
-    - Hard to get the cross-validated error on prediction when p close to n. Consider, for example, a data set where there are 100 samples and 75 predictors. If we use a resampling scheme that uses two-thirds of the data for training, then we will be unable to find a unique set of regression coefficients, since the number of predictors in the training set will be larger than the number of samples.
-    - If $p > n$, then there is no longer a unique least squares coefficient estimate: the variance is infinite so the method cannot be used at all.
+	- Curvature in the predicted-versus-residual plot is a primary indicator that the underlying relationship is not linear. The larger the number of original predictors, the less practical including some transformations becomes. Taking this approach can cause the data matrix to have more predictors than observations, and we then again cannot invert the matrix.
+  - Cannot invert the matrix when $p\>n$
+	- If $n\>\>p$, least-squares estimates tend to also have low variance, and hence will perform well on test observations.
+	- If n is not much larger than p, then there can be a lot of variability in the least-squares fit, resulting in overfitting and consequently poor predictions on future observations not used in model training.
+	- Hard to get the cross-validated error on prediction when p close to n. Consider, for example, a data set where there are 100 samples and 75 predictors. If we use a resampling scheme that uses two-thirds of the data for training, then we will be unable to find a unique set of regression coefficients, since the number of predictors in the training set will be larger than the number of samples.
+	- If $p \> n$, then there is no longer a unique least squares coefficient estimate: the variance is infinite so the method cannot be used at all.
 
 #### Non-linear Relationship
 
 Fit nonlinear relationship
 
-$\text{wage} = \alpha + \beta \text{education} + u$: assumes change in wages is constant for all educational levels. E.g., increasing education from 5 to 6 years leads to the same dollar increase in wages as increasing education from 11 to 12, or 15 to 16, etc.
+$textwage = alpha + beta texteducation + u$: assumes change in wages is constant for all educational levels. E.g., increasing education from 5 to 6 years leads to the same dollar increase in wages as increasing education from 11 to 12, or 15 to 16, etc.
 
-$\log(\text{wage}) = \alpha + \beta\text{education} + u$: each year of education leads to a constant proportionate (i.e., percentage) increase in wages
+$log(textwage) = alpha + betatexteducation + u$: each year of education leads to a constant proportionate (i.e., percentage) increase in wages
 
-$\text{wage} = \alpha + \beta \log(\text{years of experience}) + u$: If we increase x by one percent, we expect y to increase by ($\beta$ 1/100) units of y.
+$textwage = alpha + beta log(textyears of experience) + u$: If we increase x by one percent, we expect y to increase by ($beta$ 1/100) units of y.
 
-$\text{salary} = \alpha + \beta \log(\text{sales}) + u$: For each 1% increase in sales, salary increase by $\beta %$
+$textsalary = alpha + beta log(textsales) + u$: For each 1% increase in sales, salary increase by $beta %$
 
 Many nonlinear specifications can be converted to linear form by performing transformations on the variables in the model. Detect by scatterplots of the IV against the DV.
 
@@ -513,36 +506,36 @@ Polynomial model
 
 If it is thought that the slope of the effect of Xi on E(Y) changes sign as Xi increases. For many such models, the relationship between Xi and E(Y) can be accurately reflected with a specification in which Y is viewed as a function of Xi and one or more powers of Xi
 
-When M = 2, $\beta_1$ indicates the overall linear trend (positive or negative) in the relationship between X and Y across the observed data. $\beta_2$ indicates the direction of curvature. For example, a positive coefficient for $X$ and a negative coefficient for $X^2$ cause the curve to rise initially and then fall.
+When M = 2, $beta\_1$ indicates the overall linear trend (positive or negative) in the relationship between X and Y across the observed data. $beta\_2$ indicates the direction of curvature. For example, a positive coefficient for $X$ and a negative coefficient for $X^2$ cause the curve to rise initially and then fall.
 
-Concave upward, $_2$ is positive
+Concave upward, $\_2$ is positive
 
-Concave downward, $_2$ is negative.
+Concave downward, $\_2$ is negative.
 
 A polynomial of order k will have a maximum of k-1 bends (k-1 points at which the slope of the curve changes direction). Note that the bends do not necessarily have to occur within the observed values of the Xs.
 
 Drawback: They can perform poorly on the extremes of the predictor
 
-Fractional polynomials differ from regular polynomials in that they allow logarithms, allow noninteger powers, and they allow powers to be repeated. [Link](https://www.stata.com/features/overview/fractional-polynomials/)
+Fractional polynomials differ from regular polynomials in that they allow logarithms, allow non-integer powers, and they allow powers to be repeated. [Link](https://www.stata.com/features/overview/fractional-polynomials/)
 
-Exponential Model $ln(Y) = \alpha + \beta X + \epsilon, Y = e^{\alpha + \beta X + \epsilon}$
+Exponential Model $ln(Y) = alpha + beta X + epsilon, Y = e^alpha + beta X + epsilon$
 
-- Some variables might increase exponentially rather than arithmetically. For example, each year of education may be worth an additional 5% income, rather than, say, 2,000. Hence, for somebody who would otherwise make 20,000 a year, an additional year of education would raise their income 1,000. For those who would otherwise be expected to make 40,000, an additional year could be worth 2,000. Note that the actual dollar amount of the increase is different, but the percentage increase is the same. When $\beta$ is positive, the curve has a positive slope throughout, but the slope gradually increases in magnitude as X increases.
+- Some variables might increase exponentially rather than arithmetically. For example, each year of education may be worth an additional 5% income, rather than, say, 2,000. Hence, for somebody who would otherwise make 20,000 a year, an additional year of education would raise their income 1,000. For those who would otherwise be expected to make 40,000, an additional year could be worth 2,000. Note that the actual dollar amount of the increase is different, but the percentage increase is the same. When $beta$ is positive, the curve has a positive slope throughout, but the slope gradually increases in magnitude as X increases.
 
-- When $\beta$ is negative, the curve has a negative slope throughout and the slope gradually decreases in magnitude as X increases, with the curve approaching the X-axis as Y gets infinitely large.
+- When $beta$ is negative, the curve has a negative slope throughout and the slope gradually decreases in magnitude as X increases, with the curve approaching the X-axis as Y gets infinitely large.
 
 Exponential models – Power Models
 
 - ln Y ~ ln X
-  - Every 1% increase in X is associated with a $\beta$ percentage change in E(Y)
+  - Every 1% increase in X is associated with a $beta$ percentage change in E(Y)
 
 **[Fourier Basis](http://irl.cs.brown.edu/fb.php)**
 
-$\phi_{2n-1}(x)=\text{sin}(\frac{x}{n})$, $\phi_{2n}(x)=\text{cos}(\frac{x}{n})$, tune integer value $n=1, 2, \ldots, 5$
+$phi_2n-1(x)=textsin(fracxn)$, $phi_2n(x)=textcos(fracxn)$, tune integer value $n=1, 2, ldots, 5$
 
 Gaussian Basis
 
-$\phi_{n}(x)=e^{-(x-5n)^2/a}$
+$phi\_n(x)=e^-(x-5n)^2/a$
 
 #### Interaction Terms
 
@@ -563,9 +556,9 @@ So for two plants in full sun, a plant with 1000 more bacteria/ml in the soil wo
 
 [Regression Overview](http://dept.stat.lsa.umich.edu/~kshedden/Courses/Stat504/posts/regression_overview)
 
-The coefficient of GLM is always linked to the outcome $\mu_i$ by the link function.
+The coefficient of GLM is always linked to the outcome $mu\_i$ by the link function.
 
-$$\frac{1}{\mu_i}=\alpha+\beta_1 x_1+\beta_2 x_2 + \epsilon$$
+$$frac1mu\_i=alpha+beta\_1 x\_1+beta\_2 x\_2 + epsilon$$
 
 #### Distributions
 
@@ -575,9 +568,9 @@ A discrete probability distribution that models the number of failures in a sequ
 
 Coefficient
 
-So if you have a negative $\beta$ for a dummy variable x, you can say that "on average, x lowers the expected value of log(y) by $\beta$ \*100 percent."
+So if you have a negative $beta$ for a dummy variable x, you can say that "on average, x lowers the expected value of log(y) by $beta$ \*100 percent."
 
-You can also get a multiplicative effect by exponentiating the coefficients. For example, if $\beta$ D=.43, then folks with D=1 are expected to have exp{.43}=1.54 times higher outcome (holding everything else constant). This is the incidence rate ratio interpretation
+You can also get a multiplicative effect by exponentiating the coefficients. For example, if $beta$ D=.43, then folks with D=1 are expected to have exp.43=1.54 times higher outcome (holding everything else constant). This is the incidence rate ratio interpretation
 
 Link functions
 
@@ -585,24 +578,24 @@ Parameters to tune
 
 ##### Poisson
 
-##### Binomial (Logit when log link)
+##### Binomial (Logit when log 
 
-###### Algorithm
+**Algorithm**
 
-Logit function = log-odds = the logarithm of the odds $\frac{p}{1-p}$.
+Logit function = log-odds = the logarithm of the odds $fracp1-p$.
 
 Instead of fitting a straight line or hyperplane, the logistic regression model uses the logistic function to squeeze the output of a linear equation between 0 and 1. The logistic function will always produce an S-shaped curve of this form, and so regardless of the value of X, we will obtain a sensible prediction. On the other hand, if directly use linear, get a negative probability.
 
-- $log(frac{p(X)}{1-p(X)})=\beta_{0} + \beta_{1} X$
+- $log(fracp(X)1-p(X))=beta_0 + beta_1 X$
 
 - Why use maximum likelihood to fit a logistic regression model.
   - If you're fitting a binomial GLM with a logit link (i.e. a logistic regression model), then your regression equation is the log-odds that the response value is a '1' (or a 'success'), conditioned on the predictor values.
 
-###### Preprocessing
+**Preprocessing**
 
-Scale so that penalty applies evenly during regularization. Is normalization better?
+Scale so that penalty applies evenly during regularization. 
 
-###### Hyperparameters
+**Hyperparameters**
 
 Logistic regression does not really have any critical hyperparameters to tune.
 
@@ -620,25 +613,25 @@ The C parameter controls the penality strength, which can also be effective.
 
 - C in [100, 10, 1.0, 0.1, 0.01]
 
-###### Coefficient Interpretation
+**Coefficient Interpretation**
 
 Exponentiating the log odds gives you the odds ratio for a one-unit increase in your variable. Here, the odds of your outcome for men are exp(0.014) = 1.01 times that of the odds of your outcome in women.
 
-$ln(frac{p(X)}{1-p(X)})=\beta_0 + \beta_1 X$
+$ln(fracp(X)1-p(X))=beta\_0 + beta\_1 X$
 
-$\text{odds}(\text{female}) = e^{\beta_0 + \beta_1 * 0}$
+$textodds(textfemale) = e^beta\_0 + beta\_1 \* 0$
 
-$\text{odds}(\text{male}) = e^{\beta_0 + \beta_1 * 1}$
+$textodds(textmale) = e^beta\_0 + beta\_1 \* 1$
 
-$\text{odds ratio}(\text{male}) = \text{odds}(\text{male}) / \text{odds}(\text{female}) = e^0.014 = 1.01$
+$textodds ratio(textmale) = textodds(textmale) / textodds(textfemale) = e^0.014 = 1.01$
 
-$\text{odds ratio}(\text{female}) = 1 / 1.01 = 0.99$
+$textodds ratio(textfemale) = 1 / 1.01 = 0.99$
 
-###### Multiclass Extension
+**Multiclass Extension**
 
 Multiple-class extensions of logit not used all that often.
 
-###### Assumptions
+**Assumptions**
 
 - The outcome is a binary
 - There is a linear relationship between the logit of the outcome and each predictor variable. (The true conditional probabilities are a logistic function of the independent variables.)
@@ -652,15 +645,15 @@ Multiple-class extensions of logit not used all that often.
   - Second, the error terms (residuals) do not need to be normally distributed.
   - Third, homoscedasticity is not required. Finally, the dependent variable in logistic regression is not measured on an interval or ratio scale.
 
-###### Tests
-
-Link test
+**Link Test**
 
 The Stata command linktest can be used to detect a specification error, and it is issued after the logit or logistic command. The idea behind linktest is that if the model is properly specified, one should not be able to find any additional predictors that are statistically significant except by chance. After the regression command (in our case, logit or logistic), linktest uses the linear predicted value (hat) and linear predicted value squared (hatsq) as the predictors to rebuild the model. The variable hat should be a statistically significant predictor since it is the predicted value from the model. This will be the case unless the model is completely misspecified. On the other hand, if our model is properly specified, variable hatsq shouldn’t have much predictive power except by chance. Therefore, if hatsq is significant, then the linktest is significant. This usually means that either we have omitted relevant variable(s) or our link function is not correctly specified.
 
 [link](https://stats.idre.ucla.edu/stata/webbooks/logistic/chapter3/lesson-3-logistic-regression-diagnostics/)
 
 ### Linear Mixed Effect Model
+
+`Statsmodel` documentation provides an excellent explanation for LME models.
 
 [Link](https://www.statsmodels.org/stable/mixed_linear.html)
 
@@ -671,7 +664,7 @@ A method for finding a linear combination of features that characterizes or sepa
 - a linear classifier
 - or, more commonly, for dimensionality reduction before later classification
 
-#### Relationship with Other Methods
+**Relationship with Other Methods**
 
 - ANOVA uses categorical independent variables and a continuous dependent variable
 
@@ -681,9 +674,9 @@ Questions along the line of – knowing the differences in categories they belon
   - Similar to Logistic regression and probit regression.
   - These other methods are preferable in applications where it is not reasonable to assume that the independent variables are normally distributed, which is a fundamental assumption of the LDA method.
 
-LDA is also closely related to principal component analysis (PCA) and factor analysis in that they both look for linear combinations of variables that best explain the data.[4] LDA explicitly attempts to model the difference between the classes of data. PCA, in contrast, does not take into account any difference in class, and factor analysis builds the feature combinations based on differences rather than similarities. Discriminant analysis is also different from factor analysis in that it is not an interdependence technique: a distinction between independent variables and dependent variables (also called criterion variables) must be made.
+LDA is also closely related to principal component analysis (PCA) and factor analysis in that they both look for linear combinations of variables that best explain the data.[4] LDA explicitly attempts to model the difference between the classes of data. PCA, in contrast, does not consider any difference in class, and factor analysis builds the feature combinations based on differences rather than similarities. Discriminant analysis is also different from factor analysis in that it is not an interdependence technique: a distinction between independent variables and dependent variables (also called criterion variables) must be made.
 
-#### Assumptions
+**Assumptions**
 
 The assumptions of discriminant analysis are the same as those for MANOVA. The analysis is quite sensitive to outliers and the size of the smallest group must be larger than the number of predictor variables.
 
@@ -694,20 +687,14 @@ The assumptions of discriminant analysis are the same as those for MANOVA. The a
 
 It has been suggested that discriminant analysis is relatively robust to slight violations of these assumptions, and it has also been shown that discriminant analysis may still be reliable when using dichotomous variables (where multivariate normality is often violated).
 
-### GAM
-
-[Stitchfix](https://multithreaded.stitchfix.com/assets/files/gam.pdf)
-
-[ML Notebook from Christoper](https://christophm.github.io/interpretable-ml-book/extend-lm.html)
-
 ### Additional Linear Topics
 
-#### Influential Outliers
+**Influential Outliers**
 
 - Can be examined by visualizing the Cook’s distance values.
 - Note that not all outliers are influential observations. To check whether the data contains potential influential observations, the standardized residual error can be inspected. Data points with absolute standardized residuals above 3 represent possible outliers and may deserve closer attention.
 
-Other methods
+**Other methods**
 
 - Note: Average and Standard Deviation are only valid for Gaussian distributions.
 - Isolation forest
@@ -718,23 +705,28 @@ Other methods
   - This path length, averaged over a forest of such random trees, is a measure of normality and our decision function.
   - Random partitioning produces noticeably shorter paths for anomalies. Hence, when a forest of random trees collectively produces shorter path lengths for particular samples, they are highly likely to be anomalies.
 
-#### Multicollinearity
+**Multicollinearity**
 
 - Occurs when the independent variables are too highly correlated with each other. One of the variables that are supposedly positively correlated with the dependent variable has a negative coefficient. Why?
-- Test by:
+
+_Test by_
   - Correlation matrix – Pairwise Pearson’s Bivariate Correlation among all independent variables need to be smaller than 1.
-  - Variance Inflation Factor $\text{VIF} = \frac{1}{1 - R_{j}^{2}}$. The VIF equals 1 when the vector $X_j$ is orthogonal to each column of the design matrix for the regression of Xj on the other covariates. With VIF > 10 there is an indication that multicollinearity may be present; with VIF > 100 there is certainly multicollinearity among the variables.
-  - $R_{j}^{2}$ is the multiple $R^{2}$ for the regression of $X_j$ on the other covariates (a regression that does not involve the response variable Y). This identity separates the influences of several distinct factors on the variance of the coefficient estimate
+  - Variance Inflation Factor $textVIF = frac11 - R\_{j^2}$. The VIF equals 1 when the vector $X\_j$ is orthogonal to each column of the design matrix for the regression of Xj on the other covariates. With VIF \> 10 there is an indication that multicollinearity may be present; with VIF \> 100 there is certainly multicollinearity among the variables.
+  - $R\_j^2$ is the multiple $R^2$ for the regression of $X\_j$ on the other covariates (a regression that does not involve the response variable Y). This identity separates the influences of several distinct factors on the variance of the coefficient estimate
+
 - [Version 2](https://docs.google.com/document/d/1e9dfm3-JHy9JE5eRrcW1YUVo09ORPjnnozq05i_aBZ4/edit#)
+
+TODO V2 to be combined 
+
   - Collinearity is the state where two variables are highly correlated and contain similar information about the variance within a given dataset. To detect colinearity among variables, simply create a correlation matrix and find variables with large absolute values. In R use the corr function and in python this can by accomplished by using numpy's corrcoef function.
   - Multicollinearity on the other hand is more troublesome to detect because it emerges when three or more variables, which are highly correlated, are included within a model. To make matters worst multicollinearity can emerge even when isolated pairs of variables are not colinear.
   - A common R function used for testing regression assumptions and specifically multicollinearity is "VIF()" and unlike many statistical concepts, its formula is straightforward:
   - $ V.I.F. = 1 / (1 - R^2). $
   - The Variance Inflation Factor (VIF) is a measure of colinearity among predictor variables within a multiple regression. It is calculated by taking the ratio of the variance of all a given model's betas divided by the variance of a single beta if it were fit alone.
   - Steps for Implementing VIF
-    - Run a multiple regression.
-    - Calculate the VIF factors.
-    - Inspect the factors for each predictor variable, if the VIF is between 5-10, multicollinearity is likely present and you should consider dropping the variable.
+	- Run a multiple regression.
+	- Calculate the VIF factors.
+	- Inspect the factors for each predictor variable, if the VIF is between 5-10, multicollinearity is likely present and you should consider dropping the variable.
 - In Logistic regression
   - You can use whatever method you would use for ordinary regression. The dependent variable is irrelevant to multicollinearity issues, so it doesn't matter if you used logistic regression or regular regression or whatever.
 - Depending on the situation, might/might not need to process further.
@@ -747,145 +739,11 @@ Other methods
   - No predictor can be determined from a combination of one or more of the other predictors
   - The number of samples is greater than the number of predictors. If the data fall under either of these conditions, then a unique set of regression coefficients does not exist.
 
-#### Normality Assumption
+**Normality Assumption**
 
-### Naive Bayes
+### Decision Tree
 
-Example
-
-$P(\text{Sunny}|\text{Yes})=3/9=0.33$
-
-$P(\text{Sunny})=5/14=0.36$
-
-$P(\text{Yes})=9/14=0.64$
-
-$P(\text{Yes}|\text{Sunny})=P(\text{Sunny}|\text{Yes})\times P(\text{Yes})/P(\text{Sunny})$
-
-$P(\text{Yes}|\text{Sunny})=0.33\times 0.64/0.36=0.60$
-
-$P(\text{No}|\text{Sunny})=0.40$
-
-- Applications
-- Pro
-  - It is easy and fast to predict the class of test data set. It also performs well in multi-class prediction
-  - When the assumption of independence holds, a Naive Bayes classifier performs better compared to other models like logistic regression and you need less training data.
-  - It performs well in the case of categorical input variables compared to the numerical variable(s). For numerical variables, a normal distribution is assumed (bell curve, which is a strong assumption).
-- Con
-  - If the categorical variable has a category (in the test data set), which was not observed in the training data set, then the model will assign a 0 (zero) probability and will be unable to make a prediction. This is often known as “Zero Frequency”. To solve this, we can use the smoothing technique. One of the simplest smoothing techniques is called Laplace estimation.
-  - On the other side naive Bayes is also known as a bad estimator, so the probability outputs from predict_proba are not to be taken too seriously.
-  - Another limitation of Naive Bayes is the assumption of independent predictors. In real life, it is almost impossible that we get a set of predictors that are completely independent.
-
-### KNN
-
-#### Algorithm
-
-Search for linear or nonlinear boundaries that optimally separate the data. These boundaries are then used to predict the classification of new samples. “Closeness” is determined by a distance metric, like Euclidean and Minkowski, and choice of metric depends on predictor characteristics.
-
-- Decide on a distance metric (e.g., Euclidean distance, 1 - correlation, etc.) and find the distances from each point in the test set to each point in the training set. The distance is measured in the feature space, that is, with respect to the explanatory variables (not the response variable).n.b. In most machine learning algorithms that use “distance” as a measure, the “distance” is not required to be a mathematical distance metric. Indeed, 1-correlation is a very common distance measure, and it fails the triangle inequality.
-- Consider a point in the training set. Find the k closest points in the test set to the one test observation.
-- Using majority vote, find the dominant class of the k closest points. Predict that class label to the test observation. Values for k are typically odd to prevent ties. If the response variable is continuous (instead of categorical), find the average response variable of the k training point to be the predicted response for the one test observation.
-
-#### Preprocessing
-
-- Normalizing the data is a method that allows giving every attribute the same influence in identifying neighbors when computing certain types of distances like the Euclidean one. You should normalize your data when the scales have no meaning and/or you have inconsistent scales like centimeters and meters. It implies prior knowledge of the data to know which one is more important. The algorithm automatically normalizes the data when both numeric and categorical variable is provided.
-
-#### Hyperparameters
-
-```python
-# define model and parameters
-model = SVC()
-kernel = ['poly', 'rbf', 'sigmoid']
-C = [50, 10, 1.0, 0.1, 0.01]
-gamma = ['scale']
-
-# define grid search
-grid = dict(kernel = kernel, C = C, gamma = gamma)
-cv = RepeatedStratifiedKFold(n_splits = 10, n_repeats = 3, random_state = 1)
-grid_search = GridSearchCV(estimator = model, param_grid = grid, n_jobs = -1, cv = cv,
-
-      *scoring = 'accuracy', error_score = 0)
-
-grid_result = grid_search.fit(X, y)
-
-# summarize results
-print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
-means = grid_result.cv_results_['mean_test_score']
-stds = grid_result.cv_results_['std_test_score']
-params = grid_result.cv_results_['params']
-for mean, stdev, param in zip(means, stds, params):
-    print("%f (%f) with: %r" % (mean, stdev, param))
-```
-
-- K: The number of neighbors to look for. It is recommended to take an odd k for binary classes to avoid ties.
-  - A low k will increase the influence of noise and the results are going to be less generalizable.
-  - A high k will tend to blur local effects which are exactly what we are looking for.
-- Aggregation method: The aggregation method to use. Here we allow for the arithmetic mean, median, and mode for numeric variables and mode for categorical ones.
-- Distance metric:
-  - Numeric attribute distances: among the various distance metrics available, we will focus on the main ones, Euclidean and Manhattan. Euclidean is a good distance measure to use if the input variables are similar in type (e.g. all measured widths and heights). Manhattan distance is a good measure to use if the input variables are not similar in type (such as age, height, etc…).
-    - Euclidean
-    - 1 - correlation
-    - Cosine
-    - manhattan
-    - Minkowski
-    - Haversine distance (geographical)
-  - Categorical attribute distances: without prior transformation, applicable distances are related to frequency and similarity. Here we allow the use of two distances: Hamming distance and the Weighted Hamming distance.
-    - Hamming distance: take all the categorical attributes and for each, count one if the value is not the same between two points. The Hamming distance is then the number of attributes for which the value was different.
-    - Weighted Hamming distance: also return one if the value is different, but returns the frequency of the value in the attribute if they are matching, increasing the distance when the value is more frequent. When more than one attribute is categorical, the harmonic mean is applied. The result remains between zero and one but the mean value is shifted toward the lower values compared to the arithmetic mean.
-  - Binary attribute distances: those attributes are generally obtained via categorical variables transformed into dummies. As already mentioned for the continuous variables, the Euclidean distance can also be applied here. However, there is also another metric based on dissimilarity that can be used, the Jaccard distance.
-    - Jaccard distance
-
-#### Trade Offs
-
-- Pro
-  - Can produce decent predictions, especially when the response is dependent on the local predictor structure.
-  - it can easily work for any number of categories
-  - it can predict a quantitative response variable
-  - the bias of 1-NN is often low (but the variance is high)
-  - any distance metric can be used (so the algorithm models the data appropriately)
-  - the method is simple to implement/understand
-  - model is nonparametric (no distributional assumptions on the data)
-  - great model for imputing missing data
-- Con
-  - Euclidean distance is dominated by scale. Need to standardize. The distance value between samples will be biased towards predictors with larger scales. To allow each predictor to contribute equally to the distance calculation, we recommend centering and scaling all predictors before performing KNN.
-  - One class can dominate if it has a large majority
-  - It can be computationally unwieldy (and unneeded!!) to calculate all distances (there are algorithms to search smartly)
-  - the output doesn’t provide any information about which explanatory variables are informative.
-  - Any method with tuning parameters can be prone to overfitting, and KNN is especially susceptible to this problem. Too few neighbors lead to highly localized fitting (i.e., over-fitting), while too many neighbors lead to boundaries that may not locate necessary separating structure in the data. Therefore, we must take the usual cross-validation or resampling approach for determining the optimal value of K.
-  - The new sample’s predicted class is the class with the highest probability estimate; if two or more classes are tied for the highest estimate, then the tie is broken at random or by looking ahead to the K + 1 closest neighbor. As the number of neighbors increases, the probability of ties also increases.
-  - The KNN method can have poor predictive performance when the local predictor structure is not relevant to the response. Irrelevant or noisy predictors are one culprit since these can cause similar samples to be driven away from each other in the predictor space. Hence, removing irrelevant, noise-laden predictors is a key pre-processing step for KNN. Another approach to enhancing KNN predictivity is to weight the neighbors’ contribution to the prediction of a new sample based on their distance to the new sample. In this variation, training samples that are closer to the new sample contribute more to the predicted response, while those that are farther away contribute less to the predicted response.
-
-#### Applications
-
-##### Page Ranking/Document Retrieval
-
-[Link](https://www.geeksforgeeks.org/tf-idf-model-for-page-ranking/) to incorporate
-
-- TF-IDF model (basically a kNN)
-
-  - Can be used to compare the similarity between documents and retrieve the relevant ones.
-  - We used the vector space model, which entails assigning to each executable (i.e., document) a vector of size equal to the total number of distinct n-grams (i.e., terms) in the collection. The components of each vector were the weights of the top n-grams present in the executable. For the $j$th n-gram of the ith executable, the method computes the weight $w_{ij}$, defined as $w_{ij} = tf_{ij}
-    times idf_{j}$
-    - $tf_{ij}$, the number of times the ith n-gram appears in the jth executable
-    - $idf_{j} = log
-        frac{d}{df_j}$, where $d$ is the total number of executables and $df_j$ is the number of executables that contain the $j$th n-gram.
-    - Use log because it is not necessarily the case that the less the occurrence of a term across documents, the more relevant a term is no matter the number of documents the term is in - sub-linear function better approximates this relationship.
-  - Intuition: A high weight in TF-IDF is reached by a high term frequency (in the given document) and a low document frequency of the term in the whole collection of documents; the weights hence tend to filter out common terms.
-  - To classify an unknown instance, the method uses the top n-grams from the executable, as described previously, to form a vector, u, the components of which are each n-gram’s inverse document frequency (i.e., $u_j = idf_j$).
-  - Once formed, the classifier computes a similarity coefficient (SC) between the vector for the unknown executable and each vector for the executables in the collection using the cosine similarity measure:
-
-  - After selecting the top five closest matches to the unknown, the method takes a weighted majority vote of the executable labels, and returns the class with the least weight as the prediction. It uses the cosine measure as the weight.
-
-##### Imputation
-
-It can be used for data that are continuous, discrete, ordinal, and categorical which makes it particularly useful for dealing with all kinds of missing data.
-
-The assumption behind using KNN for missing values is that a point value can be approximated by the values of the points that are closest to it, based on other variables.
-
-Let’s keep the previous example and add another variable, the income of the person. Now we have three variables, gender, income, and the level of depression that has missing values. We then assume that people of similar income and same gender tend to have the same level of depression. For a given missing value, we will look at the gender of the person, its income, look for its k nearest neighbors, and get their level of depression. We can then approximate the depression level of the person we wanted.
-
-### Tree
-
-#### Algorithm
+**Algorithm**
 
 - Start with all variables in one group.
 - Find the variable/split that best separates the outcomes (successive binary partitions based on the different predictors - explanatory variables).
@@ -894,18 +752,16 @@ Let’s keep the previous example and add another variable, the income of the pe
   - Within each split, find the best variable/split that separates the outcomes.
 - Continue until the groups are too small or sufficiently “pure”.
 
-Algorithm with Pruning
-
-- An algorithm for building
+**Algorithm with Pruning**
 
 - A similar algorithm for both building and pruning
   - Partition the data in K1 groups.
   - Remove the first group, and train the data on the remaining K1 - 1 groups.
-  - Use K2-fold cross-validation (on the K1 - 1 groups) to choose $\alpha$. That is, divide the training observations into K2 folds and find $\alpha$ that minimizes the error.
-  - Using the subtree that corresponds to the chosen value of $\alpha$, predicts the first of the K1 hold out samples.
+  - Use K2-fold cross-validation (on the K1 - 1 groups) to choose $alpha$. That is, divide the training observations into K2 folds and find $alpha$ that minimizes the error.
+  - Using the subtree that corresponds to the chosen value of $alpha$, predicts the first of the K1 hold out samples.
   - Repeat steps 2-4 using the remaining K1 - 1 groups.
 
-#### Interactions
+**Interactions**
 
 The impact of predictor A on the outcome depends on the value of a different predictor B.
 
@@ -913,7 +769,7 @@ CARTs can easily model this by first splitting on B and then, on lower levels, s
 
 If you have enough data, this will indeed happen automatically. Since CARTs consider all possible interactions (instead of the user having to explicitly model them), then need much more data to avoid fitting noise, i.e., spurious interactions.
 
-#### Hyperparameters
+**Hyperparameters**
 
 - Node impurity measures
   - Gini is intended for continuous attributes, and Entropy for attributes that occur in classes.
@@ -922,34 +778,32 @@ If you have enough data, this will indeed happen automatically. Since CARTs cons
   - Entropy for exploratory analysis.
   - Some studies show this doesn’t matter – these differ less than 2% of the time.
   - Entropy may be a little slower to compute.
-- Pruning parameter $\alpha$. Cost complexity pruning—also known as weakest link pruning—gives us a way to do just this. Rather than considering every possible subtree, we consider a sequence of trees indexed by a nonnegative tuning parameter $\alpha$. When $\alpha$ = 0, then the subtree T will simply equal T0, because then (8.4) just measures the training error. However, as $\alpha$ increases, there is a price to pay for having a tree with many terminal nodes, and so the quantity (8.4) will tend to be minimized for a smaller subtree. Here T(0) is the unpruned tree obtained when $T = T_0$.
+- Pruning parameter $alpha$. Cost complexity pruning—also known as weakest link pruning—gives us a way to do just this. Rather than considering every possible subtree, we consider a sequence of trees indexed by a nonnegative tuning parameter $alpha$. When $alpha$ = 0, then the subtree T will simply equal T0, because then (8.4) just measures the training error. However, as $alpha$ increases, there is a price to pay for having a tree with many terminal nodes, and so the quantity (8.4) will tend to be minimized for a smaller subtree. Here T(0) is the unpruned tree obtained when $T = T\_0$.
   - T: Number of terminal nodes of the tree.
   - Resubstitution Error Rate (R). The resubstitution rate is a measure of error. It is the proportion of original observations that were misclassified by various subsets of the original tree. The resubstitution rate decreases as you go down the list of trees. The largest tree will always yield the lowest resubstitution error rate. However, choosing the tree with the lowest resubstitution rate is not the optimal choice, as this tree will have a bias. Large trees will put random variation in the predictions as they overfit outliers.
-    - $R_\alpha(T) = R(T) +\alpha|T|$
-      - When $\alpha =inf$, only stump left
-      - When $\alpha = 0$, full tree
-      - When $\alpha = 1$, it’s possible to recursively prune the current tree to reduce the cost function because doing this reduces $|T|$.
-      - When $\alpha = 2$, it’s possible to recursively prune the current tree to reduce the cost function because doing this reduces $|T|$.
+	- $R\_alpha(T) = R(T) +alpha|T|$
+	  - When $alpha =inf$, only stump left
+	  - When $alpha = 0$, full tree
+	  - When $alpha = 1$, it’s possible to recursively prune the current tree to reduce the cost function because doing this reduces $|T|$.
+	  - When $alpha = 2$, it’s possible to recursively prune the current tree to reduce the cost function because doing this reduces $|T|$.
   - This is reminiscent of LASSO where a similar formulation was used to control the complexity.
-  - The way to think about cost complexity is to consider $\alpha$ increasing. As $\alpha$ gets bigger, the “best" tree will be smaller. But the test error will not be monotonically related to the size of the training tree.
-    - $\alpha$ small: If $\alpha$ is set to be small, we are saying that the risk is more worrisome than the complexity and larger trees are favored because they reduce the risk.
-    - $\alpha$ large: If $\alpha$ is set to be large, then the complexity of the tree is more worrisome, and smaller trees are favored.
+  - The way to think about cost complexity is to consider $alpha$ increasing. As $alpha$ gets bigger, the “best" tree will be smaller. But the test error will not be monotonically related to the size of the training tree.
+	- $alpha$ small: If $alpha$ is set to be small, we are saying that the risk is more worrisome than the complexity and larger trees are favored because they reduce the risk.
+	- $alpha$ large: If $alpha$ is set to be large, then the complexity of the tree is more worrisome, and smaller trees are favored.
 
-#### Trade Offs
+**Trade Offs**
 
-- Pro
+_Pro_
 
   - They are easy to explain; trees are easy to display graphically (which make them easy to interpret). (They mirror the typical human decision-making process.)
   - Can handle categorical or numerical predictors of response variables (indeed, they can handle mixed predictors at the same time!).
   - Can handle more than 2 groups for categorical predictions
   - Easily ignore redundant variables.
   - Perform better than linear models in non-linear settings.
-
-    - Classification trees are non-linear models, so they immediately use interactions between variables.
-
+	- Classification trees are non-linear models, so they immediately use interactions between variables.
   - Data transformations may be less important (monotone transformations on the explanatory variables won’t change anything).
 
-- Con
+_Con_
   - Straight CART does not generally have the same predictive accuracy as other classification approaches. (we will improve the model - see random forests, boosting, bagging)
   - Difficult to write down / consider the CART “model”
   - Without proper pruning, the model can easily lead to overfitting.
@@ -969,17 +823,17 @@ If you have enough data, this will indeed happen automatically. Since CARTs cons
 
 ### Bagging Trees
 
-#### Algorithm
+**Algorithm**
 
-#### Tuning Parameter
+**Tuning Parameter**
 
-- n_estimators in [10, 100, 1000]
+- n\_estimators in [10, 100, 1000]
   - Good values might be a log scale from 10 to 1,000.
   - ELI5: Good explanation for log vs linear scale
 
-#### Trade Offs
+**Trade Offs**
 
-- Pro
+_Pro_
 
   - Can handle categorical or numerical response variables (indeed, they can handle mixed predictors at the same time!).
   - Can handle more than 2 groups for categorical predictions
@@ -988,41 +842,40 @@ If you have enough data, this will indeed happen automatically. Since CARTs cons
   - Classification trees are non-linear models, so they immediately use interactions between variables.
   - Data transformations may be less important (monotone transformations on the explanatory variables won’t change anything).
   - Similar bias to CART, but reduced variance (can be proved).
-  - OOB samples can be used as test data to estimate the error rate of the tree.
+  - OOB samples can be used as test data to estimate the error rate of the tree.	
+	- Why is OOB 1/3?
 
-    - Why is OOB 1/3?
-
-    - Con
+_Con_
 
   - Model is even harder to “write-down” (than CART). The model improves prediction accuracy at the expense of interpretability.
   - With lots of predictors, (even greedy) partitioning can become computationally unwieldy - now the computational task is even harder! (because of the number of trees grown for each bootstrap sample)
 
 ### RF
 
-#### Algorithms
+**Algorithms**
 
 As with bagging, each tree in the forest casts a vote for the classification of a new sample, and the proportion of votes in each class across the ensemble is the predicted probability vector.
 
 - 1. Bootstrap sample from the training set.
 - 2. Grow an unpruned tree on this bootstrap sample.
   - At each split, select m variables and determine the best split using only these predictors.
-  - Typically m = sqrt(p) or log_2(p), where p is the number of features. Random forests are not overly sensitive to the value of m. [splits are chosen as with trees: according to either squared error or Gini index/cross-entropy / classification error.]
+  - Typically m = sqrt(p) or log\_2(p), where p is the number of features. Random forests are not overly sensitive to the value of m. [splits are chosen as with trees: according to either squared error or Gini index/cross-entropy / classification error.]
   - Do not prune the tree. Save the tree as is! (We don’t need to because this allows us to grow very different trees - and the potential of overfitting are mitigated by averaging trees built on bootstrapped data, and by decorrelating trees through selecting from a subset of predictors.)
 - 3. For each tree grown on a bootstrap sample, predict the OOB samples. For each tree grown, 1/3 of the training samples won’t be in the bootstrap sample – those are called out of bootstrap (OOB) samples. OOB samples can be used as test data to estimate the error rate of the tree.
 - 4. Combine the OOB predictions to create the “out-of-bag” error rate (either majority vote or the average of predictions/class probabilities).
 - 5. All trees together represent the model that is used for new predictions (either majority vote or average).
 
-#### Hyperparameters
+**Hyperparameters**
 
-- To tune max_features, we recommend starting with five values that are somewhat evenly spaced across the range from 2 to P, where P is the number of predictors. We likewise recommend starting with an ensemble of 1,000 trees and increasing that number if performance is not yet close to a plateau. [‘sqrt’, ‘log2’]
-- n_estimators in [10, 100, 1000]
+- To tune max\_features, we recommend starting with five values that are somewhat evenly spaced across the range from 2 to P, where P is the number of predictors. We likewise recommend starting with an ensemble of 1,000 trees and increasing that number if performance is not yet close to a plateau. [‘sqrt’, ‘log2’]
+- n\_estimators in [10, 100, 1000]
   - Ideally, this should be increased until no further improvement is seen in the model.
 
-#### Trade Offs
+**Trade Offs**
 
 - Pro
   - Note that by bootstrapping the samples and the predictor variables, we add another level of randomness over which we can average to again decrease the variability.
-    - Comparing to bagging, de-correlate the trees in the forest. Reduces the variance further. Each tree has the same expectation, but the average will again reduce the variability.
+	- Comparing to bagging, de-correlate the trees in the forest. Reduces the variance further. Each tree has the same expectation, but the average will again reduce the variability.
   - Subset of predictors makes random forests much faster to search through than all predictors
   - The model is relatively insensitive to values of mtry.
   - As with most trees, the data pre-processing requirements are minimal - does not require standardizing data, etc.
@@ -1030,14 +883,14 @@ As with bagging, each tree in the forest casts a vote for the classification of 
   - Automatically capture the interaction between variables
   - Random forests are quite accurate
   - Generally, models do not overfit the data, and CV is not needed. However, CV can be used to fit the tuning parameters (m, node size, max number of nodes, etc.).
-    - Roughly speaking, some of the potential over-fitting that might happen in a single tree (which is a reason you do pruning generally) is mitigated by two things in a Random Forest:
-      - The fact that the samples used to train the individual trees are "bootstrapped".
-      - The fact that you have a multitude of random trees using random features and thus the individual trees are strong but not so correlated with each other.
+	- Roughly speaking, some of the potential over-fitting that might happen in a single tree (which is a reason you do pruning generally) is mitigated by two things in a Random Forest:
+	  - The fact that the samples used to train the individual trees are "bootstrapped".
+	  - The fact that you have a multitude of random trees using random features and thus the individual trees are strong but not so correlated with each other.
   - Advantage over GBT
-    - Although RF is also based on tree averaging, it has several clear advantages over GBRT:
-      - It is particularly insensitive to parameter choices
-      - It is known to be very resistant to overfitting
-      - It is very parallelizable.
+	- Although RF is also based on tree averaging, it has several clear advantages over GBRT:
+	  - It is particularly insensitive to parameter choices
+	  - It is known to be very resistant to overfitting
+	  - It is very parallelizable.
 - Con
   - Model is even harder to “write-down” (than CART). The model improves prediction accuracy at the expense of interpretability.
   - With lots of predictors, (even greedy) partitioning can become computationally unwieldy - now the computational task is even harder!
@@ -1047,22 +900,22 @@ As with bagging, each tree in the forest casts a vote for the classification of 
 - Boosting refers to a family of algorithms in which a set of weak learners (learners that are only slightly correlated with the true process) are combined to produce a strong learner.
 - Boosting can be applied to any classification technique, but classification trees are a popular method for boosting since these can be made into weak learners by restricting the tree depth to create trees with few splits (also known as stumps).
 - Also called Gradient Boosting Machine (GBM) or named for the specific implementation, such as XGBoost.
-- Gradient Boosting > Random Forest > Bagging > Single Trees
+- Gradient Boosting \> Random Forest \> Bagging \> Single Trees
   - In his talk titled “Gradient Boosting Machine Learning” at H2O, Trevor Hastie made the comment that in general gradient boosting performs better than a random forest, which in turn performs better than individual decision trees.
 - It works because: Since classification trees are a low bias/high variance technique, the ensemble of trees helps to drive down variance, producing a result that has low bias and low variance.
 
-#### Hyperparameters
+**Hyperparameters**
 
 The gradient boosting algorithm has many parameters to tune.
 
-- Learning_rate (also called shrinkage or eta (learning_rate)) in [0.001, 0.01, 0.1]
-- n_estimators [10, 100, 1000]
+- Learning\_rate (also called shrinkage or eta (learning\_rate)) in [0.001, 0.01, 0.1]
+- n\_estimators [10, 100, 1000]
 - subsample in [0.5, 0.7, 1.0]
   - number of rows or subset of the data to consider for each tree (subsample)
-- max_depth in [3, 7, 9]
+- max\_depth in [3, 7, 9]
   - the depth of each tree
 
-#### Best Practices
+**Best Practices**
 
 [How to configure GBT](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
 
@@ -1070,23 +923,23 @@ The gradient boosting algorithm has many parameters to tune.
 - Smaller values of v lead to larger values of M for the same training risk so that there is a tradeoff between them. … In fact, the best strategy appears to be to set v to be very small (v ? 0.1) and then choose M by early stopping.
   - In the case of GBT, set the value for v, then gradually increase M until the performance starts to degrade. Monitoring the performance on a validation dataset to calibrate the number of trees and to use an early stopping procedure once performance on the validation dataset begins to degrade.
   - Neural Network context
-    - Train the model once for a large number of training epochs.
-    - During training, the model is evaluated on a holdout validation dataset after each epoch.
-    - If the performance of the model on the validation dataset starts to degrade (e.g. loss begins to increase or accuracy begins to decrease), then the training process is stopped.
+	- Train the model once for a large number of training epochs.
+	- During training, the model is evaluated on a holdout validation dataset after each epoch.
+	- If the performance of the model on the validation dataset starts to degrade (e.g. loss begins to increase or accuracy begins to decrease), then the training process is stopped.
   - Additional considerations for early stopping:
-    - More elaborate triggers may be required in practice. This is because the training of a neural network is stochastic and can be noisy. Plotted on a graph, the performance of a model on a validation dataset may go up and down many times. This means that the first sign of overfitting may not be a good place to stop training.
-    - Performance of the model is evaluated on the validation set at the end of each epoch, which adds computational cost during training. This can be reduced by evaluating the model less frequently, such as every 2, 5, or 10 training epochs.
+	- More elaborate triggers may be required in practice. This is because the training of a neural network is stochastic and can be noisy. Plotted on a graph, the performance of a model on a validation dataset may go up and down many times. This means that the first sign of overfitting may not be a good place to stop training.
+	- Performance of the model is evaluated on the validation set at the end of each epoch, which adds computational cost during training. This can be reduced by evaluating the model less frequently, such as every 2, 5, or 10 training epochs.
   - In general
-    - Early stopping requires that you configure your network to be under constrained, meaning that it has more capacity than is required for the problem.
-    - When training the network, a larger number of training epochs is used than may normally be required, to give the network plenty of opportunities to fit, then begin to overfit the training dataset.
-    - There are three elements to using early stopping; they are:
-      - Monitoring model performance.
-      - Trigger to stop training.
-      - The choice of model to use.
+	- Early stopping requires that you configure your network to be under constrained, meaning that it has more capacity than is required for the problem.
+	- When training the network, a larger number of training epochs is used than may normally be required, to give the network plenty of opportunities to fit, then begin to overfit the training dataset.
+	- There are three elements to using early stopping; they are:
+	  - Monitoring model performance.
+	  - Trigger to stop training.
+	  - The choice of model to use.
 - Sampling fraction: best is approximately 40% (f=0.4) – 50%. However, sampling only 30% or even 20% of the data at each iteration still gives a considerable improvement over no sampling at all, with a corresponding computational speed-up by factors of 3 and 5 respectively.
 - Number of nodes in the tree: Friedman found values like 3 and 6 better than larger values like 11, 21, and 41. ESL Ch 10 recommends 6, with generally good values in the range of 4-to-8.
 
-#### Trade Offs
+**Trade Offs**
 
 - Pro
   - This method is very accurate. The training examples that were misclassified have their weights boosted, and a new tree is formed. This procedure is then repeated consecutively for the new trees. The final score is taken as a weighted sum of the scores of the individual leaves from all trees.
@@ -1096,18 +949,18 @@ The gradient boosting algorithm has many parameters to tune.
   - Moreover, as a byproduct, a sorted list of the relative importance of features (i.e., a feature importance list) is automatically generated for each boosted tree model.
 - Con
   - Computationally expensive
-    - Start by reducing the number of candidates through filtering. In a typical ranking setup, we need to evaluate the same trained model on multiple instances of feature vectors. For example, we need to rank ~1,000 different potential candidates for a given person and pick only the most relevant ones.
-      - Randomly sample 0.5 ~ 0.8 of the training data to decorrelate trees and prevent overfitting.
+	- Start by reducing the number of candidates through filtering. In a typical ranking setup, we need to evaluate the same trained model on multiple instances of feature vectors. For example, we need to rank ~1,000 different potential candidates for a given person and pick only the most relevant ones.
+	  - Randomly sample 0.5 ~ 0.8 of the training data to decorrelate trees and prevent overfitting.
 - Parameters
   - Tree depth (or interaction depth), 1 makes it an addictive model and usually gives good results
   - Number of iterations, build 100 - 1000 trees
   - shrinkage/learning rate, 0.01 ~ 0.001, smaller the slower
 - Pearson residual
   - The raw residual divided by the square root of the variance function $V(
-    mu)$.
+	mu)$.
   - A standardized Pearson residual has N(0,1) distribution. A value that exceeds 2 or 3 in absolute value is a sign of lack of fit.
 
-#### AdaBoost, Gradient Boosting, and XGBoost
+**AdaBoost, Gradient Boosting, and XGBoost**
 
 AdaBoost:
 
@@ -1117,39 +970,19 @@ AdaBoost:
 - Compared to random forests and XGBoost, AdaBoost performs worse when irrelevant features are included in the model
 - Application
   - AdaBoost is best used in a dataset with low noise, when computational complexity or timeliness of results is not the main concern and when there are not enough resources for broader hyperparameter tuning due to lack of time and knowledge of the user.
-    Gradient Boosting: no penalty
-    XGBoost: Node splitting in parallel
+	Gradient Boosting: no penalty
+	XGBoost: Node splitting in parallel
 
-### Additional Tree Topics
-
-#### Variable Importance
-
-Permute helps [link](https://www.kaggle.com/dansbecker/permutation-importance#Code-Example)
-
-For single trees, variable importance can be determined by aggregating the improvement in the optimization objective for each predictor. For random forests, the improvement criteria (default is typically the Gini Impurity) is aggregated across the ensemble to generate an overall variable importance measure. Alternatively, predictors’ impact on the ensemble can be calculated using a permutation approach.
-
-Variable importance can be measured by two different metrics
-
-- (permutation) accuracy:
-  - For each tree, the prediction error on the out-of-bag portion of the data is recorded (error rate for classification, MSE for regression).
-  - Within the OOB values, permute the jth variable and recalculate the prediction error.
-  - The difference between the two is then averaged over all trees (with the jth variable) to give the importance for the jth variable.
-- Purity:
-  - The decrease (or increase, depending on the plot) in node purity: root sum of squares (RSS) [deviance/Gini for classification trees]. That is, the amount of total decrease in RSS from splitting on that variable averaged over all trees.
-
-Difference between Variable Importance and Latent Variable Importance
-
-Often, especially in the case of GBT, two variants of the correlated variables are included in tree models to achieve a better fit. This may affect variable inferences that solely focus on either variant. Shapley values of the correlated siblings could be added to better approximate the Shapley values of the latent feature.
-
-Shapley Values
+## Other Models
 
 ### Support Vector Machines
 
-- Algorithm
+#### Algorithm
 
+#### Trade Offs
 - Pro
   - Can always fit a linear separating hyperplane in a high enough dimensional space.
-  - The kernel trick makes it possible to not know the transformation functions, $\phi$.
+  - The kernel trick makes it possible to not know the transformation functions, $phi$.
   - Because the optimization is on a convex function, the numerical process for finding solutions is extremely efficient.
   - It works really well with a clear margin of separation
   - It is effective in high dimensional spaces.
@@ -1159,12 +992,12 @@ Shapley Values
   - Overall, doesn’t work when large data/noisy data/hard data/multi-class/non-numeric/need probability estimates
   - Can only classify binary categories (response variable).
   - All predictor variables must be numeric.
-    - A great differential in range will allow variables with a large range to dominate the predictions. Either linearly scale each attribute to some range [ e.g., (-1, +1) or (0,1)] or divide by the standard deviation.
-    - Categorical variables can be used if formatted as binary factor variables.
-    - Whatever is done to the training data must also be done to the test data!
+	- A great differential in range will allow variables with a large range to dominate the predictions. Either linearly scale each attribute to some range [ e.g., (-1, +1) or (0,1)] or divide by the standard deviation.
+	- Categorical variables can be used if formatted as binary factor variables.
+	- Whatever is done to the training data must also be done to the test data!
   - Another problem is the kernel function itself.
-    - With primitive data (e.g., 2d data points), good kernels are easy to come by.
-    - With harder data (e.g., MRI scans), finding a sensible kernel function may be much harder.
+	- With primitive data (e.g., 2d data points), good kernels are easy to come by.
+	- With harder data (e.g., MRI scans), finding a sensible kernel function may be much harder.
   - With really large data, it doesn't perform well because of the large amount of required training time
   - It also doesn’t perform very well when the data set has a lot of noise i.e., target classes are overlapping
   - SVM doesn’t directly provide probability estimates, these are calculated using an expensive five-fold cross-validation.
@@ -1180,19 +1013,19 @@ Similar to online and offline learning needed in the Facebook newsfeed to provid
 - Boosting
   - How to use boosting for other models?
   - Hypothesis
-    - Fit the initial model, obtain residual
-    - Use the same model to fit the residual, and repeat this process
-    - Stop until a criterion is reached. Obtain an ensemble model that’s the combination of multiple models, each with their own weights (depending on the model)
+	- Fit the initial model, obtain residual
+	- Use the same model to fit the residual, and repeat this process
+	- Stop until a criterion is reached. Obtain an ensemble model that’s the combination of multiple models, each with their own weights (depending on the model)
 
 ### Bayesian Models
 
-The goal is to estimate the posterior distribution for the probability of observing each species, $p$, conditioned on the data, and hyperparameters, such as $\alpha$.
+The goal is to estimate the posterior distribution for the probability of observing each species, $p$, conditioned on the data, and hyperparameters, such as $alpha$.
 
-In more formal terms, we assign probability distributions to unknown quantities $P(\theta)$. Then, we use Bayes' theorem to transform the prior probability distribution into a posterior distribution $P(\theta|y)$.
+In more formal terms, we assign probability distributions to unknown quantities $P(theta)$. Then, we use Bayes' theorem to transform the prior probability distribution into a posterior distribution $P(theta|y)$.
 
 For instance, in a readability study,
 
-- $\theta$ measure the coefficient -- the effectiveness of each font on readability, and $P(\theta)$ is its distribution.
+- $theta$ measure the coefficient -- the effectiveness of each font on readability, and $P(theta)$ is its distribution.
 
 #### Coin-flipping Problem (beta-binomial model)
 
@@ -1203,13 +1036,13 @@ For instance, in a readability study,
 
 **Prior:** will land half of the time heads and half of the time tails; in Bayesian statistics, every time we do not know the value of a parameter, we put a prior on it.
 
-$$P(\theta)\sim \text{Beta}(\alpha, \beta)=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta^{\alpha-1}(1-\theta){\beta-1}$$
+$$P(theta)sim textBeta(alpha, beta)=fracGamma(alpha+beta)Gamma(alpha)Gamma(beta)theta^alpha-1(1-theta)beta-1$$
 
-_The beta distribution looks similar to the binomial except for the first term, which is a normalizing constant that ensures the distribution integrates to 1, and $\Gamma$ is the Greek uppercase gamma letter and represents gamma function. We can see from the preceding formula that the beta distribution has two parameters, $\alpha$, and $\beta$._
+_The beta distribution looks similar to the binomial except for the first term, which is a normalizing constant that ensures the distribution integrates to 1, and $Gamma$ is the Greek uppercase gamma letter and represents gamma function. We can see from the preceding formula that the beta distribution has two parameters, $alpha$, and $beta$._
 
 We use Beta for prior because
 
-- beta distribution is restricted to be between 0 and 1, in the same way, $\theta$ is. In general, we use the beta distribution when we want to model proportions of a binomial variable.
+- beta distribution is restricted to be between 0 and 1, in the same way, $theta$ is. In general, we use the beta distribution when we want to model proportions of a binomial variable.
 - versatility. As we can see in the preceding figure, the distribution adopts several shapes (all restricted to the [0, 1] interval), including a uniform distribution, Gaussian-like distributions, and U-like distributions.
 - the beta distribution is the conjugate prior of the binomial distribution (which we are using as the likelihood). A **conjugate prior**[^or something?] of a likelihood is a prior that, when used in combination with a given likelihood, returns a posterior with the same functional form as the prior. Every time we use a beta distribution as the prior and a binomial distribution as the likelihood, we will get a beta as the posterior distribution.
   - There are other pairs of conjugate priors; for example, the Normal distribution is the conjugate before itself. For many years, Bayesian analysis was restricted to the use of conjugate priors. Conjugacy ensures mathematical tractability of the posterior, which is important given that a common problem in Bayesian statistics is ending up with a posterior we cannot solve analytically. This was a deal-breaker before the development of suitable computational methods to solve probabilistic methods.
@@ -1217,10 +1050,10 @@ We use Beta for prior because
 **Likelihood:** chance of observing data given the prior. We need to choose a reasonable distribution here – in this case, Binomial.
 
 Given a coin that's perceived as fair, what's the probability of observing the actual data.
-$P(\theta)\sim \text{Beta}(\alpha, \beta)$
-$P(y)\sim \text{Bernoulli}(p=\theta)$
+$P(theta)sim textBeta(alpha, beta)$
+$P(y)sim textBernoulli(p=theta)$
 
-- The only unobserved variable in our model is $\theta$.
+- The only unobserved variable in our model is $theta$.
 - y is an observed variable representing the data; we do not need to sample that because we already know those values
 
 ```python
@@ -1243,11 +1076,11 @@ Sometimes, describing the posterior is not enough. Sometimes, we need to make de
 
 #### Toy Model
 
-$\alpha$ comes from the hyperparameter specified in the Dirichlet distribution. It specifies our prior belief in the number of event occurrences.
+$alpha$ comes from the hyperparameter specified in the Dirichlet distribution. It specifies our prior belief in the number of event occurrences.
 
 **Prior:** Probability of observing any of the three animals is the same
 
-**Expected value:** The mean of the posterior distribution. This represents the expected value taking into account the pseudo counts which corporate our initial belief about the situation. We can adjust our level of confidence in this prior belief by increasing the magnitude of the pseudo counts. This forces the expected values closer to our initial belief that the prevalence of each species is equal. For Dirichlet-Multinomial, it is $$E[p_i|\mathcal{X}, \alpha]=\frac{c_i+a_i}{N+\sum_k \alpha_k}$$
+**Expected value:** The mean of the posterior distribution. This represents the expected value taking into account the pseudo counts which corporate our initial belief about the situation. We can adjust our level of confidence in this prior belief by increasing the magnitude of the pseudo counts. This forces the expected values closer to our initial belief that the prevalence of each species is equal. For Dirichlet-Multinomial, it is $$E[p\_i|mathcalX, alpha]=fracc\_i+a\_iN+sum\_k alpha\_k$$
 
 ```python
 species = ['lions', 'tigers', 'bears']
@@ -1323,13 +1156,180 @@ with pm.Model() as model:
 np.mean(trace['alpha']) , np.mean(trace['tau'])
 ```
 
+### Naive Bayes
+
+Example
+
+$P(textSunny|textYes)=3/9=0.33$
+
+$P(textSunny)=5/14=0.36$
+
+$P(textYes)=9/14=0.64$
+
+$P(textYes|textSunny)=P(textSunny|textYes)times P(textYes)/P(textSunny)$
+
+$P(textYes|textSunny)=0.33times 0.64/0.36=0.60$
+
+$P(textNo|textSunny)=0.40$
+
+- Applications
+- Pro
+  - It is easy and fast to predict the class of test data set. It also performs well in multi-class prediction
+  - When the assumption of independence holds, a Naive Bayes classifier performs better compared to other models like logistic regression and you need less training data.
+  - It performs well for categorical input variables compared to the numerical variable(s). For numerical variables, a normal distribution is assumed (bell curve, which is a strong assumption).
+- Con
+  - If the categorical variable has a category (in the test data set), which was not observed in the training data set, then the model will assign a 0 (zero) probability and will be unable to make a prediction. This is often known as “Zero Frequency”. To solve this, we can use the smoothing technique. One of the simplest smoothing techniques is called Laplace estimation.
+  - On the other side naive Bayes is also known as a bad estimator, so the probability outputs from `predict_proba` are not to be taken too seriously.
+  - Another limitation of Naive Bayes is the assumption of independent predictors. In real life, it is almost impossible that we get a set of predictors that are completely independent.
+
+### GAM
+
+[Stitchfix](https://multithreaded.stitchfix.com/assets/files/gam.pdf)
+
+[ML Notebook from Christoper](https://christophm.github.io/interpretable-ml-book/extend-lm.html)
+
+### kNN
+
+#### Algorithm
+
+Search for linear or nonlinear boundaries that optimally separate the data. These boundaries are then used to predict the classification of new samples. “Closeness” is determined by a distance metric, like Euclidean and Minkowski, and choice of metric depends on predictor characteristics.
+
+- Decide on a distance metric (e.g., Euclidean distance, 1 - correlation, etc.) and find the distances from each point in the test set to each point in the training set. The distance is measured in the feature space, that is, with respect to the explanatory variables (not the response variable).n.b. In most machine learning algorithms that use “distance” as a measure, the “distance” is not required to be a mathematical distance metric. Indeed, 1-correlation is a very common distance measure, and it fails the triangle inequality.
+- Consider a point in the training set. Find the k closest points in the test set to the one test observation.
+- Using majority vote, find the dominant class of the k closest points. Predict that class label to the test observation. Values for k are typically odd to prevent ties. If the response variable is continuous (instead of categorical), find the average response variable of the k training point to be the predicted response for the one test observation.
+
+#### Preprocessing
+
+- Normalizing the data is a method that allows giving every attribute the same influence in identifying neighbors when computing certain types of distances like the Euclidean one. You should normalize your data when the scales have no meaning and/or you have inconsistent scales like centimeters and meters. It implies prior knowledge of the data to know which one is more important. The algorithm automatically normalizes the data when both numeric and categorical variable is provided.
+
+#### Hyperparameters
+
+```python
+# define model and parameters
+model = SVC()
+kernel = ['poly', 'rbf', 'sigmoid']
+C = [50, 10, 1.0, 0.1, 0.01]
+gamma = ['scale']
+
+# define grid search
+grid = dict(kernel = kernel, C = C, gamma = gamma)
+cv = RepeatedStratifiedKFold(n_splits = 10, n_repeats = 3, random_state = 1)
+grid_search = GridSearchCV(estimator = model, param_grid = grid, n_jobs = -1, cv = cv,
+
+      *scoring = 'accuracy', error_score = 0)
+
+grid_result = grid_search.fit(X, y)
+
+# summarize results
+print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
+means = grid_result.cv_results_['mean_test_score']
+stds = grid_result.cv_results_['std_test_score']
+params = grid_result.cv_results_['params']
+for mean, stdev, param in zip(means, stds, params):
+    print("%f (%f) with: %r" % (mean, stdev, param))
+```
+
+- K: The number of neighbors to look for. It is recommended to take an odd k for binary classes to avoid ties.
+  - A low k will increase the influence of noise and the results are going to be less generalizable.
+  - A high k will tend to blur local effects which are exactly what we are looking for.
+- Aggregation method: The aggregation method to use. Here we allow for the arithmetic mean, median, and mode for numeric variables and mode for categorical ones.
+- Distance metric:
+  - Numeric attribute distances: among the various distance metrics available, we will focus on the main ones, Euclidean and Manhattan. Euclidean is a good distance measure to use if the input variables are similar in type (e.g. all measured widths and heights). Manhattan distance is a good measure to use if the input variables are not similar in type (such as age, height, etc…).
+	- Euclidean
+	- 1 - correlation
+	- Cosine
+	- manhattan
+	- Minkowski
+	- Haversine distance (geographical)
+  - Categorical attribute distances: without prior transformation, applicable distances are related to frequency and similarity. Here we allow the use of two distances: Hamming distance and the Weighted Hamming distance.
+	- Hamming distance: take all the categorical attributes and for each, count one if the value is not the same between two points. The Hamming distance is then the number of attributes for which the value was different.
+	- Weighted Hamming distance: also return one if the value is different, but returns the frequency of the value in the attribute if they are matching, increasing the distance when the value is more frequent. When more than one attribute is categorical, the harmonic mean is applied. The result remains between zero and one but the mean value is shifted toward the lower values compared to the arithmetic mean.
+  - Binary attribute distances: those attributes are generally obtained via categorical variables transformed into dummies. As already mentioned for the continuous variables, the Euclidean distance can also be applied here. However, there is also another metric based on dissimilarity that can be used, the Jaccard distance.
+	- Jaccard distance
+
+#### Trade Offs
+
+- Pro
+  - Can produce decent predictions, especially when the response is dependent on the local predictor structure.
+  - it can easily work for any number of categories
+  - it can predict a quantitative response variable
+  - the bias of 1-NN is often low (but the variance is high)
+  - any distance metric can be used (so the algorithm models the data appropriately)
+  - the method is simple to implement/understand
+  - model is nonparametric (no distributional assumptions on the data)
+  - great model for imputing missing data
+- Con
+  - Euclidean distance is dominated by scale. Need to standardize. The distance value between samples will be biased towards predictors with larger scales. To allow each predictor to contribute equally to the distance calculation, we recommend centering and scaling all predictors before performing KNN.
+  - One class can dominate if it has a large majority
+  - It can be computationally unwieldy (and unneeded!!) to calculate all distances (there are algorithms to search smartly)
+  - the output doesn’t provide any information about which explanatory variables are informative.
+  - Any method with tuning parameters can be prone to overfitting, and KNN is especially susceptible to this problem. Too few neighbors lead to highly localized fitting (i.e., over-fitting), while too many neighbors lead to boundaries that may not locate necessary separating structure in the data. Therefore, we must take the usual cross-validation or resampling approach for determining the optimal value of K.
+  - The new sample’s predicted class is the class with the highest probability estimate; if two or more classes are tied for the highest estimate, then the tie is broken at random or by looking ahead to the K + 1 closest neighbor. As the number of neighbors increases, the probability of ties also increases.
+  - The KNN method can have poor predictive performance when the local predictor structure is not relevant to the response. Irrelevant or noisy predictors are one culprit since these can cause similar samples to be driven away from each other in the predictor space. Hence, removing irrelevant, noise-laden predictors is a key pre-processing step for KNN. Another approach to enhancing KNN predictivity is to weight the neighbors’ contribution to the prediction of a new sample based on their distance to the new sample. In this variation, training samples that are closer to the new sample contribute more to the predicted response, while those that are farther away contribute less to the predicted response.
+
+#### Applications
+
+##### Page Ranking/Document Retrieval
+
+[Link](https://www.geeksforgeeks.org/tf-idf-model-for-page-ranking/) to incorporate
+
+- TF-IDF model (basically a kNN)
+
+  - Can be used to compare the similarity between documents and retrieve the relevant ones.
+  - We used the vector space model, which entails assigning to each executable (i.e., document) a vector of size equal to the total number of distinct n-grams (i.e., terms) in the collection. The components of each vector were the weights of the top n-grams present in the executable. For the $j$th n-gram of the ith executable, the method computes the weight $w_ij$, defined as $w_ij = tf\_ij
+	times idf\_j$
+	- $tf\_ij$, the number of times the ith n-gram appears in the jth executable
+	- $idf\_j = log
+		fracddf\_j$, where $d$ is the total number of executables and $df\_j$ is the number of executables that contain the $j$th n-gram.
+	- Use log because it is not necessarily the case that the less the occurrence of a term across documents, the more relevant a term is no matter the number of documents the term is in - sub-linear function better approximates this relationship.
+  - Intuition: A high weight in TF-IDF is reached by a high term frequency (in the given document) and a low document frequency of the term in the whole collection of documents; the weights hence tend to filter out common terms.
+  - To classify an unknown instance, the method uses the top n-grams from the executable, as described previously, to form a vector, u, the components of which are each n-gram’s inverse document frequency (i.e., $u\_j = idf\_j$).
+  - Once formed, the classifier computes a similarity coefficient (SC) between the vector for the unknown executable and each vector for the executables in the collection using the cosine similarity measure:
+
+  - After selecting the top five closest matches to the unknown, the method takes a weighted majority vote of the executable labels, and returns the class with the least weight as the prediction. It uses the cosine measure as the weight.
+
+##### Imputation
+
+It can be used for data that are continuous, discrete, ordinal, and categorical which makes it particularly useful for dealing with all kinds of missing data.
+
+The assumption behind using KNN for missing values is that a point value can be approximated by the values of the points that are closest to it, based on other variables.
+
+Let’s keep the previous example and add another variable, the income of the person. Now we have three variables, gender, income, and the level of depression that has missing values. We then assume that people of similar income and same gender tend to have the same level of depression. For a given missing value, we will look at the gender of the person, its income, look for its k nearest neighbors, and get their level of depression. We can then approximate the depression level of the person we wanted.
+
+## Model Explainability
+
+### Permutation Importance
+
+ [ Permutation Importance Code Example](https://www.kaggle.com/dansbecker/permutation-importance#Code-Example)
+
+For single trees, variable importance can be determined by aggregating the improvement in the optimization objective for each predictor. For random forests, the improvement criteria (default is typically the Gini Impurity) is aggregated across the ensemble to generate an overall variable importance measure. Alternatively, predictors’ impact on the ensemble can be calculated using a permutation approach.
+
+Variable importance can be measured by two different metrics
+
+- (permutation) accuracy:
+  - For each tree, the prediction error on the out-of-bag portion of the data is recorded (error rate for classification, MSE for regression).
+  - Within the OOB values, permute the jth variable and recalculate the prediction error.
+  - The difference between the two is then averaged over all trees (with the jth variable) to give the importance for the jth variable.
+- Purity:
+  - The decrease (or increase, depending on the plot) in node purity: root sum of squares (RSS) [deviance/Gini for classification trees]. That is, the amount of total decrease in RSS from splitting on that variable averaged over all trees.
+
+Difference between Variable Importance and Latent Variable Importance
+
+Often, especially in the case of GBT, two variants of the correlated variables are included in tree models to achieve a better fit. This may affect variable inferences that solely focus on either variant. Shapley values of the correlated siblings could be added to better approximate the Shapley values of the latent feature.
+
+### Shapley Values
+
+### LIME
+
+### Partial Dependence
+
 ## Clustering
 
 ### K-means
 
 - Intuition
   - In words, this formula says that we want to partition the observations into K clusters such that the total within-cluster variation, summed over all K clusters, is as small as possible.
-  - To make it actionable we need to define the within-cluster variation. There are many possible ways to define this concept, but by far the most common choice involves squared [Euclidean distance](\#distance metrics).
+  - To make it actionable we need to define the within-cluster variation. There are many possible ways to define this concept, but by far the most common choice involves squared [Euclidean distance](\\#distance metrics).
   - Therefore,
 - Algorithm
   - Guaranteed to decrease the value of the objective function at each step.
@@ -1354,7 +1354,7 @@ Intuition:
 
 - Often, a small number of principal components are enough to explain most of the variability in the data. We assume that the directions in which X1, . . . , Xp show the most variation are the directions that are associated with Y.
 - PCA is mathematically defined as an orthogonal linear transformation that transforms the data to a new coordinate system such that the greatest variance by some projection of the data comes to lie on the first coordinate (called the first principal component), the second greatest variance on the second coordinate, and so on.
-- The second component $Z_2$ should have zero correlation with $Z_1$. This is equivalent to saying that the direction must be perpendicular/orthogonal.
+- The second component $Z\_2$ should have zero correlation with $Z\_1$. This is equivalent to saying that the direction must be perpendicular/orthogonal.
 - Better than OLS because:
   - If the assumption underlying PCR holds, then fitting a least-squares model to Z1, . . . , ZM will lead to better results than fitting a least-squares model to X1, . . . , Xp, since most or all of the information in the data that relates to the response is contained in Z1, . . . , ZM, and by estimating only M`<`p coefficients we can mitigate overfitting.
 - Not a feature selection method because each of the M principal components used in the regression is a linear combination of all p of the original features.
@@ -1367,10 +1367,10 @@ PCR will tend to do well in cases when the first few principal components are su
 Algorithm
 
 - Construct the first M principle components Z1, … Zm.
-  - Z1 = 0.839 × (pop – pop_bar) + 0.544 × (ad – ad_bar).
-    - Where 0.839^2 + 0.544^2 = 1, and this linear combination is generated in an unsupervised way, in the sense that it was generated without knowing the dependent variable.
-    - Out of every possible linear combination of pop and ad such that a^2+b^2 = 1, this particular linear combination yields the highest variance.
-    - Another interpretation – the first PC vector defines the line that is as close as possible to the data.
+  - Z1 = 0.839 × (pop – pop\_bar) + 0.544 × (ad – ad\_bar).
+	- Where 0.839^2 + 0.544^2 = 1, and this linear combination is generated in an unsupervised way, in the sense that it was generated without knowing the dependent variable.
+	- Out of every possible linear combination of pop and ad such that a^2+b^2 = 1, this particular linear combination yields the highest variance.
+	- Another interpretation – the first PC vector defines the line that is as close as possible to the data.
 - Use these components as the predictors in a linear regression model that is fit using least square. The first principal component line minimizes the sum of the squared perpendicular distances between each point and the line.
   Check the importance of the features and how to plot a biplot
 
@@ -1416,7 +1416,6 @@ plt.grid()
 myplot(x_new[:,0:2],np.transpose(pca.components_[0:2, :]))
 plt.show()
 ```
-
 ## Model Comparisons
 
 ### Cross-validation
@@ -1434,12 +1433,12 @@ We can compute the validation set error or the cross-validation error for each m
 3. measure the CV prediction error for the k value at hand
 4. repeat steps 1-3 and choose the k for which the prediction error is the lowest
 
-#### Tuning \& Assessment
+#### Tuning & Assessment
 
 1. Partition the data in K1 groups.
 2. Remove the first group and train the data on the remaining K1 - 1 groups.
-3. Divide the training observations into K2 folds and use CV to find $\alpha$ that minimizes the error.
-4. Using the subtree that corresponds to the chosen value of $\alpha$, predict the first of the K1 hold out samples.
+3. Divide the training observations into K2 folds and use CV to find $alpha$ that minimizes the error.
+4. Using the subtree that corresponds to the chosen value of $alpha$, predict the first of the K1 hold out samples.
 5. Repeat steps 2-4 using the remaining K1 - 1 groups.
 
 ### Classification Performance Metrics
@@ -1499,9 +1498,9 @@ False-negative: Improperly reporting the absence of a condition when in reality 
 
 #### Balanced Accuracy (Class Imbalance)
 
-$\frac{(\text{Sensitivity} + \text{Specificity})}{2}$
+$frac(text{Sensitivity + textSpecificity)}2$
 
-#### Precision \& Recall
+#### Precision & Recall
 
 Understanding and measure of relevance.
 
@@ -1536,9 +1535,9 @@ The performance of a model here depends on the variation of the outcome – the 
 - Adjusted R2 penalizes for having a large number of parameters:
 
 $R^2 = 1-
-frac{SS_{res}}{SS_{total}}$
+fracSS_{res}SS_{total}$
 
-$\text{Adjusted } R^2 = 1-\frac{\frac{SS_{res}}{n - k}}{\frac{SS_{total}}{n - 1}}$
+$textAdjusted  R^2 = 1-fracfrac{SS_{res}n - k}frac{SS_{total}n - 1}$
 
 ## Model Applications
 
@@ -1567,17 +1566,17 @@ The choice is usually empirically determined. I will briefly discuss choosing be
 
 Poisson vs. Negative Binomial
 
-In general, Poisson is the go-to "general workhorse" model of the 4 count data models I mentioned above. A limitation of the model is the assumption that the conditional variance = the conditional mean, which may not always be true. If your model is overdispersed (conditional variance > conditional mean), you will need to use the Negative Binomial model instead. Fortunately, when you run the Negative Binomial, the output usually includes a statistical test for the dispersion parameter (R calls this dispersion parameter "theta ( $\theta$ )," which is called "alpha" in other packages). The null hypothesis in the choice between Poisson vs. Negative Binomial is H0: $\theta$ =0, while the alternative hypothesis is H1: $\theta$ $\neq$ 0. If the coefficient on $\theta$ is significant, there is evidence of overdispersion in the model, and you would choose Negative Binomial over Poisson. If the coefficient is not statistically significant, present Poisson results.
+In general, Poisson is the go-to "general workhorse" model of the 4 count data models I mentioned above. A limitation of the model is the assumption that the conditional variance = the conditional mean, which may not always be true. If your model is overdispersed (conditional variance \> conditional mean), you will need to use the Negative Binomial model instead. Fortunately, when you run the Negative Binomial, the output usually includes a statistical test for the dispersion parameter (R calls this dispersion parameter "theta ( $theta$ )," which is called "alpha" in other packages). The null hypothesis in the choice between Poisson vs. Negative Binomial is H0: $theta$ =0, while the alternative hypothesis is H1: $theta$ $neq$ 0. If the coefficient on $theta$ is significant, there is evidence of overdispersion in the model, and you would choose Negative Binomial over Poisson. If the coefficient is not statistically significant, present Poisson results.
 
 ZIP vs. ZINB
 
 One potential complication is zero inflation, which might be an issue here. This is where the zero-inflated model's ZIP and ZINB come in. Using these models, you assume that the process generating the zero values is separate from the process generating the other, non-zero values. As with before, ZINB is appropriate when the outcome has excessive zeroes and is overdispersed, while ZIP is appropriate when the outcome has excessive zeroes but conditional mean = conditional variance. For the zero-inflated models, in addition to the model covariates you have listed above, you will need to think of variables that may have generated the excess zeroes you saw in the outcome. Again, there are statistical tests that come with the output of these models (sometimes you might have to specify them when you execute a command) that will let you empirically decide which model is the best one for your data. There are two tests of interest: The first is the test of the coefficient on the dispersion parameter.
 
-$\theta$ and the second is what is known as the Vuong test, which tells you whether the excess zeroes are generated by a separate process (i.e. whether there is, indeed, zero inflation in the outcome).
+$theta$ and the second is what is known as the Vuong test, which tells you whether the excess zeroes are generated by a separate process (i.e. whether there is, indeed, zero inflation in the outcome).
 
 In comparing the choice between ZIP and ZINB, you will again look at the test of the dispersion parameter theta.
 
-Other users can comment on the "usual" workflow, but my approach is to visualize the data and go from there. In your case, I would probably start with ZINB and run both the test on the coefficient on $\theta$ and the Vuong test\_, since it's the test on the coefficient on $\theta$ would tell you which one was better between ZIP and ZINB, and the Vuong test would tell you whether you should use zero-inflated models.
+Other users can comment on the "usual" workflow, but my approach is to visualize the data and go from there. In your case, I would probably start with ZINB and run both the test on the coefficient on $theta$ and the Vuong test\_, since it's the test on the coefficient on $theta$ would tell you which one was better between ZIP and ZINB, and the Vuong test would tell you whether you should use zero-inflated models.
 
 ### Document Retrieval
 
@@ -1585,24 +1584,24 @@ Other users can comment on the "usual" workflow, but my approach is to visualize
 - Feature Extraction
   - Bag of words
   - TF-IDF (Term Frequency - Inverse Document Frequency)
-    - Log
-      - Use log because it is not necessarily the case that more the occurrence of a term in a document more is the relevance - sub-linear function better approximates this relationship.
-      - The base of the log does not matter. $
-      *frac{log_2(x)}{log_2(x+1)} =
-      *frac{log_{10}(x)}{log_{10}(x+1)}$
-      - X+1 in the base so that it does not give infinite when 0.
+	- Log
+	  - Use log because it is not necessarily the case that more the occurrence of a term in a document more is the relevance - sub-linear function better approximates this relationship.
+	  - The base of the log does not matter. $
+	  \*fraclog\_2(x)log\_2(x+1) =
+	  \*fraclog_{10(x)}log_{10(x+1)}$
+	  - X+1 in the base so that it does not give infinite when 0.
 
 #### Notes to be incorporated
 
 - Goals
   - Predict a list of documents ranked by relevance
   - Additional context
-    - Introducing personalization to the problem
+	- Introducing personalization to the problem
 - Applications
 
   - Homepage feeds, Answers, Search, Homepage Feed, Digest Emails, Ask-to-Answer, etc.
 
-- Baseline and drawbacks, e.g ratio or difference of \# upvotes/downvotes
+- Baseline and drawbacks, e.g ratio or difference of \\# upvotes/downvotes
   - Time sensitivity: we can't rank answers until they receive votes
   - Rich get richer: the more some content is upvoted, the more likely it is going to be upvoted again
   - Joke answers: joke answers can be highly popular but don't necessarily contribute to the question page
@@ -1610,15 +1609,15 @@ Other users can comment on the "usual" workflow, but my approach is to visualize
   - Non-personalized
   - Personalized
 - What would happen if we only optimize for CTR or upvotes?
-  - CTR measures relevancy/interestingness/popularity, and Upvotes measure quality as well as popularity. When looking at upvotes, it’s better to look at the upvotes-to-views ratio. Link not only has CTR but also upvotes so this complicates things. I will assume that users engage with Q\&A most of the time and the effect of links is relatively small. Analysis
-    - Only optimizing CTR results in too much clickbait. Only optimizing upvote results in the lack of attention to some niche topics. Only optimizing the upvote-to-views ratio results in users maximize social affirmation by seeking consensus rather than discussions, which would have engaged more users. The user looks for a combination of all four things (in various weights) when coming to Company X, interestingness/affinity to the questions, a variety of topics - including the niche ones, agreeability, and vibrant discussions. All these metrics are also time sensitive so we need to adjust for that.
+  - CTR measures relevancy/interestingness/popularity, and Upvotes measure quality as well as popularity. When looking at upvotes, it’s better to look at the upvotes-to-views ratio. Link not only has CTR but also upvotes so this complicates things. I will assume that users engage with Q&A most of the time and the effect of links is relatively small. Analysis
+	- Only optimizing CTR results in too much clickbait. Only optimizing upvote results in the lack of attention to some niche topics. Only optimizing the upvote-to-views ratio results in users maximize social affirmation by seeking consensus rather than discussions, which would have engaged more users. The user looks for a combination of all four things (in various weights) when coming to Company X, interestingness/affinity to the questions, a variety of topics - including the niche ones, agreeability, and vibrant discussions. All these metrics are also time sensitive so we need to adjust for that.
   - CTR and CR may give you a good estimate of the recommender performance, but you should stay careful and keep thinking about your product. You may be running a news portal, putting the breaking news on the homepage. This might not bring you the highest possible CTR, but it maintains the quality and the feeling you and your users have about your service. Now you may put an RS there and it might start showing different content, such as yellow journalism articles or funny articles about “very fast dogs running at incredibly high speeds”. This may increase your immediate CTR by 5 times, but it will damage your image and you may lose users in the long term.
 - The ranking algorithm has the positional bias -- top answers get more click because they are easily available for the user -- how to estimate/de-bias?
   - Problem: The important difference between personal search and web search is the private content in personal search. Users can only see and search for their content. This presents an important challenge when applying learning-to-rank techniques because collecting explicit relevance judgments becomes much harder and raters can only label their documents with their queries. Though possible, such an approach can be heavily biased by the selected raters and costly to maintain due to the fast-evolving nature of private content.
-    - Click data in personal search provides implicit but abundant user feedback. It thus becomes a natural source to improve personal search quality. However, a well-known challenge in learning from click data is its inherent bias: position bias, presentation bias, and trust bias, etc. Among them, position bias has a strong influence on users’ clicks. A prerequisite of fully leveraging the power of click data is to de-bias it. As a result, there has been a great deal of research on extracting reliable signals from click data.
+	- Click data in personal search provides implicit but abundant user feedback. It thus becomes a natural source to improve personal search quality. However, a well-known challenge in learning from click data is its inherent bias: position bias, presentation bias, and trust bias, etc. Among them, position bias has a strong influence on users’ clicks. A prerequisite of fully leveraging the power of click data is to de-bias it. As a result, there has been a great deal of research on extracting reliable signals from click data.
   - Solutions
-    - Existing approaches use search result randomization over a small percentage of production traffic to estimate the position bias. This is not desired because result randomization can negatively impact users’ search experience.
-    - Given top answers less weight so that it provides less information than clicks on entries that are farther down on the list. There are X answers to a certain question on Company X. How do you create a model that takes user viewing history to rank the questions? How computationally intensive is this model? [Actual implementation of the ranking algorithm, and relevant ML models. Similar to the question below.]
+	- Existing approaches use search result randomization over a small percentage of production traffic to estimate the position bias. This is not desired because result randomization can negatively impact users’ search experience.
+	- Given top answers less weight so that it provides less information than clicks on entries that are farther down on the list. There are X answers to a certain question on Company X. How do you create a model that takes user viewing history to rank the questions? How computationally intensive is this model? [Actual implementation of the ranking algorithm, and relevant ML models. Similar to the question below.]
   - Metrics we look at to see the effect of a new ranking algorithm?
 - What are some features to consider when building recommendations/ranking algorithms?
   - For example, textual similarity, co-visit data, or other shared features such as topics. Other features related to the popularity or quality of the question are also taking into account. “Interestingness”
@@ -1628,24 +1627,24 @@ Other users can comment on the "usual" workflow, but my approach is to visualize
   - Search - maybe, global optimal ranking for all users, we can assume that the order for most “helpful” answers to a given question is independent of the user who is reading the answer.
   - Company X Feed (Homepage) - personalized ranking
 
-    - User needs: Good and interesting questions and answers
-    - Objective function:
-      - Stories (both Questions and Answers) that are ranked higher are topically relevant for the user.
-      - Quality material. “Quality of the questions/answers”.
-      - well-formatted and well-written
-      - Actions on your “social network” should also influence the ranking. “Other users the user is following”.
-      - Ongoing trending events. Timeliness is another element that should affect the model's decision to promote or demote a story. “What is trending/popular”.
-    - Implementation given the criteria:
+	- User needs: Good and interesting questions and answers
+	- Objective function:
+	  - Stories (both Questions and Answers) that are ranked higher are topically relevant for the user.
+	  - Quality material. “Quality of the questions/answers”.
+	  - well-formatted and well-written
+	  - Actions on your “social network” should also influence the ranking. “Other users the user is following”.
+	  - Ongoing trending events. Timeliness is another element that should affect the model's decision to promote or demote a story. “What is trending/popular”.
+	- Implementation given the criteria:
 
-      - Features corresponding to the criteria
+	  - Features corresponding to the criteria
 
-      \*Those actions are considered and aggregated at different temporal windows and fed into the ranking algorithm.
+	  \*Those actions are considered and aggregated at different temporal windows and fed into the ranking algorithm.
 
-      - Make it responsive to both user actions, impressions, and even trending events.
+	  - Make it responsive to both user actions, impressions, and even trending events.
 
   - Other applications: Questions, Answers, Comments, Email feeds, Related Questions, Upvotes
 
-    - Upvotes: The names that appear as having upvoted a given answer are also ranked in a way that we present at the top the ones that we consider are most informative for that given question/answer.
+	- Upvotes: The names that appear as having upvoted a given answer are also ranked in a way that we present at the top the ones that we consider are most informative for that given question/answer.
 
 ### Recommender system
 
@@ -1655,9 +1654,9 @@ Other users can comment on the "usual" workflow, but my approach is to visualize
   - "Everything else" -- lots of the rest are attempts to fit the problem into a classifier model where you predict a "liked" category. So, logistic regression, etc.
 - Neighborhood-based
   - User- or item-similarity-based
-    - Computer similarity of users/item
-    - Find k most similar users/item to User A
-    - Recommend users’ items/items not seen by User A
+	- Computer similarity of users/item
+	- Find k most similar users/item to User A
+	- Recommend users’ items/items not seen by User A
   - Varies by choice of similarity metric
   - Varies by choice of neighborhood size
   - Possibly built on clusterings of users/items
@@ -1675,30 +1674,30 @@ Other users can comment on the "usual" workflow, but my approach is to visualize
 #### Co-occurrences Matrix (Collaborative Filtering)
 
 - People who bought this also bought…
-  - (\# items x \# items) matrix
-    - look at diaper row to see what else people bought on the other axis
-    - Recommend other items with the largest counts
+  - (\\# items x \\# items) matrix
+	- look at diaper row to see what else people bought on the other axis
+	- Recommend other items with the largest counts
   - Matrix must be normalized. Otherwise, very popular items will drown out other effects, and recommendations will be based on popularity rather than co-occurrence.
   - Similarity Measures
-    - Jaccard similarity
+	- Jaccard similarity
 
 Normalizes by popularity $
-\frac{ \text{who purchased i and j}}{ \text{who purchased i or j}}$
+frac text{who purchased i and j} text{who purchased i or j}$
 
 - Cosine similarity
 
   - The resulting similarity ranges from - 1 meaning exactly opposite, to 1 meaning the same, with 0 indicating orthogonality or decorrelation, while in-between values indicate intermediate similarity or dissimilarity.
   - Text matching. the attribute vectors A and B are usually the term frequency vectors of the documents. Cosine similarity can be seen as a method of normalizing document length during the comparison.
-    - Information retrieval. the cosine similarity of two documents will range from 0 to 1 since the term frequencies (using TF–IDF weights) cannot be negative. The angle between the two term frequency vectors cannot be greater than 90°.
+	- Information retrieval. the cosine similarity of two documents will range from 0 to 1 since the term frequencies (using TF–IDF weights) cannot be negative. The angle between the two term frequency vectors cannot be greater than 90°.
 
 - Implementation
-  - Given a user A bought diapers and milk, calculate personalized score of baby wipes for User A. This allows taking past purchase history into account. $S_{\text{User A, wipes}} = \frac{1}{2}(S_{\text{wipes, diapers}} + S_{\text{wipes, milk}})$
+  - Given a user A bought diapers and milk, calculate personalized score of baby wipes for User A. This allows taking past purchase history into account. $S_text{User A, wipes} = frac12(S_text{wipes, diapers} + S\_text{wipes, milk})$
   - We can further weigh recent purchases more (time decay)
-    - Sort $S_{User A, Products}$ and find Products with the highest similarity.
+	- Sort $S\_User A, Products$ and find Products with the highest similarity.
 - Drawbacks
   - Cold start:
-    - A user has never purchased a product in the past.
-    - A product has never been purchased with any other product.
+	- A user has never purchased a product in the past.
+	- A product has never been purchased with any other product.
   - Does not utilize context (time of day), user feature (age), or product feature (content-based filtering)
 
 #### Matrix Factorization - Discover Hidden Structure
@@ -1711,38 +1710,38 @@ Normalizes by popularity $
 Rating of movie v by user u: Users watch movies and rate them, but each user only watches a subset of movies.
 
 - Matrix - Rating of movie v by user u.
-  - $\text{Rating}(\text{user}, \text{rating})$ known for black cells
-    - $\text{Rating}(\text{user}, \text{rating})$ unknown for white cells
-    - Factors
-    - Describe user u with topics $L_u = [2.5, 0, 0.8, ...]$
-      - How much does she like action, romance, drama, …
-    - Describe movie v with topics $R_v = [0.3, 0.01, 1.5, ...]$
-      - How much is it action, romance, drama, …
-    - See how much these two vectors agree by $
-        \text{Rating}(u, v) = L_u
-        \times R_v$ for a movie. Rating will be higher for a movie that better aligns with the users’ ratings for topics.
-    - If we know all users’ preferences and movie labels, combining the user preference matrix and movie matrix gives us the rating of movies by users.
-      - However, we don’t have complete info on the L and R matrices. We estimate vectors $L_u$ and $R_v$ so that we can eventually estimate $text{rating}$. Our goal is to fill in the white blocks of the rating matrix.
-      - Once we have a matrix with estimated user ratings by movies, we can identify the movies with the highest ratings by users.
+  - $textRating(textuser, textrating)$ known for black cells
+	- $textRating(textuser, textrating)$ unknown for white cells
+	- Factors
+	- Describe user u with topics $L\_u = [2.5, 0, 0.8, ...]$
+	  - How much does she like action, romance, drama, …
+	- Describe movie v with topics $R\_v = [0.3, 0.01, 1.5, ...]$
+	  - How much is it action, romance, drama, …
+	- See how much these two vectors agree by $
+		textRating(u, v) = L\_u
+		times R\_v$ for a movie. Rating will be higher for a movie that better aligns with the users’ ratings for topics.
+	- If we know all users’ preferences and movie labels, combining the user preference matrix and movie matrix gives us the rating of movies by users.
+	  - However, we don’t have complete info on the L and R matrices. We estimate vectors $L\_u$ and $R\_v$ so that we can eventually estimate $textrating$. Our goal is to fill in the white blocks of the rating matrix.
+	  - Once we have a matrix with estimated user ratings by movies, we can identify the movies with the highest ratings by users.
 - Featured matrix factorization
   - Feature-based classification approach:
-    - handle cases where we might have very limited user data.
-    - Time of day, what I just saw, user info, past purchases,...
+	- handle cases where we might have very limited user data.
+	- Time of day, what I just saw, user info, past purchases,...
   - Matrix factorization approach: capture relationships between users and items and in particular learn features of those users and those items.
-    - capture groups of users who behave similarly - Women from Seattle who teach and have a baby
+	- capture groups of users who behave similarly - Women from Seattle who teach and have a baby
   - Result
-    - Combine by weighing each model to mitigate the cold-start problem.
-    - Ratings for a new user from features only. As more user information is discovered, matrix factorization topics become more relevant so gradually assign it with more weights.
+	- Combine by weighing each model to mitigate the cold-start problem.
+	- Ratings for a new user from features only. As more user information is discovered, matrix factorization topics become more relevant so gradually assign it with more weights.
 - Performance Metrics
   - Problem with simple classification accuracy - a fraction of items correctly classified.
-    - Might predict all as “not like” for better accuracy, but we are not interested in what a person does not like.
-    - Limited attention span (imbalanced class problem) - recommending some items that users might not like cost more than recommending no items that users might like.
-  - Precision \& Recall
-    - Precision-recall curve
-      - Best algorithm
-      - For a given precision, want recall as large as possible (or vice versa)
-      - One metric: largest area under the curve (AUC)
-      - Another: set desired recall and maximize precision (Precision at K)
+	- Might predict all as “not like” for better accuracy, but we are not interested in what a person does not like.
+	- Limited attention span (imbalanced class problem) - recommending some items that users might not like cost more than recommending no items that users might like.
+  - Precision & Recall
+	- Precision-recall curve
+	  - Best algorithm
+	  - For a given precision, want recall as large as possible (or vice versa)
+	  - One metric: largest area under the curve (AUC)
+	  - Another: set desired recall and maximize precision (Precision at K)
 
 #### Collaborative filtering - leverages the behavior of users
 
@@ -1768,8 +1767,8 @@ In a content-based recommender system, keywords are used to describe the items a
 - Pro
   - Pandora needs very little information to start
   - Con
-    - Difficult to quantify: some content types such as clothing and movies are much harder to quantify than others such as books. It is far more limited in scope - it can only make recommendations that are similar to the original seed
-    - Variety of content types: A key issue with content-based filtering is whether the system can learn user preferences from users' actions regarding one content source and use them across other content types. When the system is limited to recommending content of the same type as the user is already using, the value from the recommendation system is significantly less than when other content types from other services can be recommended. For example, recommending news articles based on browsing of news is useful, but would be much more useful when music, videos, products, discussions, etc. from different services can be recommended based on news browsing.
+	- Difficult to quantify: some content types such as clothing and movies are much harder to quantify than others such as books. It is far more limited in scope - it can only make recommendations that are similar to the original seed
+	- Variety of content types: A key issue with content-based filtering is whether the system can learn user preferences from users' actions regarding one content source and use them across other content types. When the system is limited to recommending content of the same type as the user is already using, the value from the recommendation system is significantly less than when other content types from other services can be recommended. For example, recommending news articles based on browsing of news is useful, but would be much more useful when music, videos, products, discussions, etc. from different services can be recommended based on news browsing.
 - Demographic and knowledge-based recommenders
 - Hybrid Recommender Systems
   - Implementation
@@ -1783,17 +1782,17 @@ The website makes recommendations by comparing the watching and searching habits
 - Data Collection Method
 
   - Explicit collection
-    - Asking a user to rate an item on a sliding scale.
-    - Asking a user to search.
-    - Asking a user to rank a collection of items from favorite to least favorite.
-    - Presenting two items to a user and asking him/her to choose the better one of them.
-    - Asking a user to create a list of items that he/she likes.
+	- Asking a user to rate an item on a sliding scale.
+	- Asking a user to search.
+	- Asking a user to rank a collection of items from favorite to least favorite.
+	- Presenting two items to a user and asking him/her to choose the better one of them.
+	- Asking a user to create a list of items that he/she likes.
   - Implicit collection
-    - Observing the items that a user views in an online store.
-    - Analyzing item/user viewing times.
-    - Keeping a record of the items that a user purchases online.
-    - Obtaining a list of items that a user has listened to or watched on his/her computer.
-    - Analyzing the user's social network and discovering similar likes and dislikes.
+	- Observing the items that a user views in an online store.
+	- Analyzing item/user viewing times.
+	- Keeping a record of the items that a user purchases online.
+	- Obtaining a list of items that a user has listened to or watched on his/her computer.
+	- Analyzing the user's social network and discovering similar likes and dislikes.
 
 - Which system best suits Company X?
 
@@ -1807,7 +1806,7 @@ The website makes recommendations by comparing the watching and searching habits
   - A/B testing and measure results using the following metrics
   - We approach recommendation as a ranking task, meaning that we are mainly interested in a relatively few items that we consider most relevant and are going to show to the user. This is known as top-K recommendation.
   - Ranking
-    - Mean average precision: Average precision values at ranks of relevant documents. This assumes that users want to find the most relevant documents, and it is biased towards the top of the ranking. Calculation: It takes the mean of average precision (Ave.P) values across queries. Calculate the average precision of a query by looking at the ranks that have the relevant document, taking its corresponding precision, and averaging (divide by the total number of relevant documents found). Then, take the mean value of the average precision values.
+	- Mean average precision: Average precision values at ranks of relevant documents. This assumes that users want to find the most relevant documents, and it is biased towards the top of the ranking. Calculation: It takes the mean of average precision (Ave.P) values across queries. Calculate the average precision of a query by looking at the ranks that have the relevant document, taking its corresponding precision, and averaging (divide by the total number of relevant documents found). Then, take the mean value of the average precision values.
 
 ```markdown
 For instance, for a query for the first two documents where:
