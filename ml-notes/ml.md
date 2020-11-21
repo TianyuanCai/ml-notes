@@ -17,7 +17,7 @@ What is an interesting way to learn ML?
 
 ## Learning Theory
 
-Much of the notes in here come from my learning in Prof. Yaron Singer’s CS183 Foundations of Machine Learning course at Harvard and Prof. Shai Ben-David’s online course based on his book “Understanding Machine Learning: From Theory to Algorithms” ([PDF](https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf))
+Much of the notes in here come from my learning in Prof. Yaron Singer’s CS183 Foundations of Machine Learning course at Harvard and Prof. Shai Ben-David’s online course based on his book “Understanding Machine Learning: From Theory to Algorithms” ([PDF][1])
 
 ### PAC Learnability
 
@@ -113,7 +113,7 @@ Therefore, we have a shattered set that’s bigger than the size $m$ needed to b
 
 If the VC dimension is large, we need a large sample size to learn. VC dimension measures the capacity for classifying all possible behaviors in a sample space. NFL then quantifies the difficulty with learning all possible behaviors.
 
-### [No-Free-Lunch Theorem](https://www.youtube.com/watch?v=taA3r7378gU&list=PLPW2keNyw-usgvmR7FTQ3ZRjfLs5jT4BO&t=664s)
+### [No-Free-Lunch Theorem][2]
 
 For a set of $m$ examples, and let H be **all** functions from X to ${0, 1}$. $m\_H(frac{1}{8}, frac{1}{8})geqfrac{|X|}{2}$. No algorithm can successfully learn H for the given error rate without seeing at least half of all data. This is almost just memorization, and it’s impossible for H with an infinite VC dimension to learn it.
 
@@ -243,9 +243,9 @@ Adding momentum provides a boost to accuracy. In practice, however, Adam is know
 
 #### Resources on Convex Optimization
 
-Coursera on Optimization [link](https://www.coursera.org/lecture/deep-neural-network/rmsprop-BhJlm)
+Coursera on Optimization [link][3]
 
-[cs229 Notes](http://cs229.stanford.edu/notes/cs229-notes4.pdf)
+[cs229 Notes][4]
 
 ## Exploratory Data Analysis
 
@@ -270,11 +270,11 @@ I start with the non-interactive ones in R, first `summary tools` followed by `d
   - The L2 norm is calculated as the square root of the sum of the squared vector values.
   - The max norm that is calculated as the maximum vector values.
   - Normalization is the process of scaling individual samples to have a unit norm. This process can be useful if you plan to use a quadratic form such as the dot-product or any other kernel to quantify the similarity of any pair of samples.
-  - This assumption is the base of the [Vector Space Model](https://en.wikipedia.org/wiki/Vector_Space_Model) often used in text classification and clustering contexts.
-  - The function [normalize](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.normalize.html#sklearn.preprocessing.normalize) provides a quick and easy way to perform this operation on a single array-like dataset, either using the l1 or l2 norms
+  - This assumption is the base of the [Vector Space Model][5] often used in text classification and clustering contexts.
+  - The function [normalize][6] provides a quick and easy way to perform this operation on a single array-like dataset, either using the l1 or l2 norms
 - Resources
-  - [Use of various Python scalers and their effects](https://towardsdatascience.com/scale-standardize-or-normalize-with-scikit-learn-6ccc7d176a02)
-  - [Effects on different models](https://towardsdatascience.com/understand-data-normalization-in-machine-learning-8ff3062101f0)
+  - [Use of various Python scalers and their effects][7]
+  - [Effects on different models][8]
 
 ### Remove Outliers
 
@@ -284,9 +284,9 @@ Isolation Forest
 
 kNN
 
-[Part 1](https://towardsdatascience.com/handling-missing-values-in-machine-learning-part-1-dda69d4f88ca)
+[Part 1][9]
 
-[Part 2](https://towardsdatascience.com/handling-missing-values-in-machine-learning-part-2-222154b4b58e)
+[Part 2][10]
 
 ## Other Common Topics
 
@@ -423,7 +423,7 @@ Results:
   - up-sampling in which cases from the minority classes are sampled with replacement until each class has approximately the same number.
   - It should be noted that when using modified versions of the training set, resampled estimates of model performance can become biased. For example, if the data are up-sampled, resampling procedures are likely to have the same sample in the cases that are used to build the model as well as the holdout set, leading to optimistic results. Despite this, resampling methods can still be effective at tuning the models.
 - SMOTE 
-	[smote](https://medium.com/coinmonks/smote-and-adasyn-handling-imbalanced-data-set-34f5223e167)
+	[smote][11]
 - Near Miss
 
 ## Modeling
@@ -442,28 +442,28 @@ X, y = make_blobs(n_samples=1000, centers=2, n_features=100, cluster_std=20)
 
 ### Linear
 
-[www.reed.edu/economics/parker/s11/312/notes/Notes2.pdf](https://www.reed.edu/economics/parker/s11/312/notes/Notes2.pdf)
+[www.reed.edu/economics/parker/s11/312/notes/Notes2.pdf][12]
 
 #### Assumptions
 
-- [Classical assumptions](https://stats.stackexchange.com/questions/149110/assumptions-to-derive-ols-estimator/149111#149111)
+- [Classical assumptions][13]
 - Linear relationship between independent and dependent variables.
-- [No influential outliers](\\#influential outliers)
-- [NOT NEEDED](https://stats.stackexchange.com/questions/149226/does-linear-regression-assume-all-variables-predictors-and-response-to-be-mult) Multivariate normality (all variables to be multivariate normal)
+- [No influential outliers](\\\#influential outliers)
+- [NOT NEEDED][14] Multivariate normality (all variables to be multivariate normal)
   - Checked with a histogram or a Q-Q Plot. Normality can also be checked with a goodness of fit test, e.g., the Kolmogorov-Smirnov test.
   - When the data is not normally distributed a non-linear transformation (e.g., log-transformation) might fix this issue.
-  - [stats.stackexchange.com/questions/148803/how-does-linear-regression-use-the-normal-distribution](https://stats.stackexchange.com/questions/148803/how-does-linear-regression-use-the-normal-distribution)
-  - [www.wikiwand.com/en/Gauss%E2%80%93Markov\_theorem](https://www.wikiwand.com/en/Gauss%E2%80%93Markov_theorem)
+  - [stats.stackexchange.com/questions/148803/how-does-linear-regression-use-the-normal-distribution][15]
+  - [www.wikiwand.com/en/Gauss%E2%80%93Markov\_theorem][16]
 	- Does not require error normality to get the best OLS estimates.
 - No or little multicollinearity
 - The error terms are independent of one another. Since the error terms represent random influences, they are also centered around 0.
 
-  - Violated when there is autocorrelation (Serial correlation) [link](http://www3.amherst.edu/~fwesthoff/webpost/Old/Econ_360/Econ_360-11-14-Chap.pdf)
+  - Violated when there is autocorrelation (Serial correlation) [link][17]
   - Autocorrelation occurs when the residuals are not independent of each other. Autocorrelation (serial correlation) is present whenever the value of one observation’s error term allows us to predict the value of the next. Autocorrelation of the errors violates the ordinary least squares assumption that the error terms are uncorrelated, meaning that the Gauss Markov theorem does not apply and that OLS estimators are no longer the Best Linear Unbiased Estimators (BLUE).
-	- [Causes](https://en.wikibooks.org/wiki/Econometric_Theory/Serial_Correlation#Causes_of_Autocorrelation)
+	- [Causes][18]
 	- Detection
 	  - A scatterplot allows you to check for autocorrelations.
-	  - $e\_t = rho e_t-1 + v_t$, where $v\_t$ are independent from one another. If $rho$ does not equal to 1, there’s autocorrelation.
+	  - $e\_t = rho e\_t-1 + v\_t$, where $v\_t$ are independent from one another. If $rho$ does not equal to 1, there’s autocorrelation.
 	- Consequence
 	  - Coefficient value will still be unbiased.
 	  - Variance of the coefficient estimate’s probability distribution may be biased. The standard errors tend to be underestimated (and the t-scores overestimated) when the autocorrelations of the errors at low lags are positive.
@@ -516,7 +516,7 @@ A polynomial of order k will have a maximum of k-1 bends (k-1 points at which th
 
 Drawback: They can perform poorly on the extremes of the predictor
 
-Fractional polynomials differ from regular polynomials in that they allow logarithms, allow non-integer powers, and they allow powers to be repeated. [Link](https://www.stata.com/features/overview/fractional-polynomials/)
+Fractional polynomials differ from regular polynomials in that they allow logarithms, allow non-integer powers, and they allow powers to be repeated. [Link][19]
 
 Exponential Model $ln(Y) = alpha + beta X + epsilon, Y = e^alpha + beta X + epsilon$
 
@@ -526,12 +526,12 @@ Exponential Model $ln(Y) = alpha + beta X + epsilon, Y = e^alpha + beta X + epsi
 
 Exponential models – Power Models
 
-- ln Y ~ ln X
+- ln Y \~ ln X
   - Every 1% increase in X is associated with a $beta$ percentage change in E(Y)
 
-**[Fourier Basis](http://irl.cs.brown.edu/fb.php)**
+**[Fourier Basis][20]**
 
-$phi_2n-1(x)=textsin(fracxn)$, $phi_2n(x)=textcos(fracxn)$, tune integer value $n=1, 2, ldots, 5$
+$phi\_2n-1(x)=textsin(fracxn)$, $phi\_2n(x)=textcos(fracxn)$, tune integer value $n=1, 2, ldots, 5$
 
 Gaussian Basis
 
@@ -554,7 +554,7 @@ So for two plants in full sun, a plant with 1000 more bacteria/ml in the soil wo
 
 ### GLM
 
-[Regression Overview](http://dept.stat.lsa.umich.edu/~kshedden/Courses/Stat504/posts/regression_overview)
+[Regression Overview][21]
 
 The coefficient of GLM is always linked to the outcome $mu\_i$ by the link function.
 
@@ -578,7 +578,7 @@ Parameters to tune
 
 ##### Poisson
 
-##### Binomial (Logit when log 
+##### Binomial (Logit when log
 
 **Algorithm**
 
@@ -586,7 +586,7 @@ Logit function = log-odds = the logarithm of the odds $fracp1-p$.
 
 Instead of fitting a straight line or hyperplane, the logistic regression model uses the logistic function to squeeze the output of a linear equation between 0 and 1. The logistic function will always produce an S-shaped curve of this form, and so regardless of the value of X, we will obtain a sensible prediction. On the other hand, if directly use linear, get a negative probability.
 
-- $log(fracp(X)1-p(X))=beta_0 + beta_1 X$
+- $log(fracp(X)1-p(X))=beta\_0 + beta\_1 X$
 
 - Why use maximum likelihood to fit a logistic regression model.
   - If you're fitting a binomial GLM with a logit link (i.e. a logistic regression model), then your regression equation is the log-odds that the response value is a '1' (or a 'success'), conditioned on the predictor values.
@@ -649,13 +649,13 @@ Multiple-class extensions of logit not used all that often.
 
 The Stata command linktest can be used to detect a specification error, and it is issued after the logit or logistic command. The idea behind linktest is that if the model is properly specified, one should not be able to find any additional predictors that are statistically significant except by chance. After the regression command (in our case, logit or logistic), linktest uses the linear predicted value (hat) and linear predicted value squared (hatsq) as the predictors to rebuild the model. The variable hat should be a statistically significant predictor since it is the predicted value from the model. This will be the case unless the model is completely misspecified. On the other hand, if our model is properly specified, variable hatsq shouldn’t have much predictive power except by chance. Therefore, if hatsq is significant, then the linktest is significant. This usually means that either we have omitted relevant variable(s) or our link function is not correctly specified.
 
-[link](https://stats.idre.ucla.edu/stata/webbooks/logistic/chapter3/lesson-3-logistic-regression-diagnostics/)
+[link][22]
 
 ### Linear Mixed Effect Model
 
 `Statsmodel` documentation provides an excellent explanation for LME models.
 
-[Link](https://www.statsmodels.org/stable/mixed_linear.html)
+[Link][23]
 
 ### Linear Discriminant Analysis
 
@@ -714,7 +714,7 @@ _Test by_
   - Variance Inflation Factor $textVIF = frac11 - R\_{j^2}$. The VIF equals 1 when the vector $X\_j$ is orthogonal to each column of the design matrix for the regression of Xj on the other covariates. With VIF \> 10 there is an indication that multicollinearity may be present; with VIF \> 100 there is certainly multicollinearity among the variables.
   - $R\_j^2$ is the multiple $R^2$ for the regression of $X\_j$ on the other covariates (a regression that does not involve the response variable Y). This identity separates the influences of several distinct factors on the variance of the coefficient estimate
 
-- [Version 2](https://docs.google.com/document/d/1e9dfm3-JHy9JE5eRrcW1YUVo09ORPjnnozq05i_aBZ4/edit#)
+- [Version 2][24]
 
 TODO V2 to be combined 
 
@@ -740,6 +740,44 @@ TODO V2 to be combined
   - The number of samples is greater than the number of predictors. If the data fall under either of these conditions, then a unique set of regression coefficients does not exist.
 
 **Normality Assumption**
+
+**Regression with Skewed Data**
+
+E.g. Modeling user clicks
+
+Skewness can be detected through QQ plot and histogram
+
+Linear regression is not the right choice for your outcome, given:
+
+1. The outcome variable is not normally distributed
+2. The outcome variable being limited in the values it can take on (count data means the predicted values cannot be negative)
+3. What appears to be a high frequency of cases with 0 visits
+
+**Limited dependent variable models for count data**
+
+The estimation strategy you can choose from is dictated by the "structure" of your outcome variable. That is, if your outcome variable is limited in the values it can take on (i.e. if it's a [limited dependent variable][25]), you need to choose a model where the predicted values will fall within the possible range for your outcome. While sometimes linear regression is a good approximation for limited dependent variables (for example, in the case of binary logit/probit), oftentimes it is not. Enter [Generalized Linear Models][26]. In your case, because the outcome variable is count data, you have several choices:
+
+1. Poisson model
+2. Negative Binomial model
+3. Zero Inflated Poisson (ZIP) model
+4. Zero Inflated Negative Binomial (ZINB) model
+
+The choice is usually empirically determined. I will briefly discuss choosing between these options below.
+
+Poisson vs. Negative Binomial
+
+In general, Poisson is the go-to "general workhorse" model of the 4 count data models I mentioned above. A limitation of the model is the assumption that the conditional variance = the conditional mean, which may not always be true. If your model is overdispersed (conditional variance \> conditional mean), you will need to use the Negative Binomial model instead. Fortunately, when you run the Negative Binomial, the output usually includes a statistical test for the dispersion parameter (R calls this dispersion parameter "theta ( $theta$ )," which is called "alpha" in other packages). The null hypothesis in the choice between Poisson vs. Negative Binomial is H0: $theta$ =0, while the alternative hypothesis is H1: $theta$ $neq$ 0. If the coefficient on $theta$ is significant, there is evidence of overdispersion in the model, and you would choose Negative Binomial over Poisson. If the coefficient is not statistically significant, present Poisson results.
+
+ZIP vs. ZINB
+
+One potential complication is zero inflation, which might be an issue here. This is where the zero-inflated model's ZIP and ZINB come in. Using these models, you assume that the process generating the zero values is separate from the process generating the other, non-zero values. As with before, ZINB is appropriate when the outcome has excessive zeroes and is overdispersed, while ZIP is appropriate when the outcome has excessive zeroes but conditional mean = conditional variance. For the zero-inflated models, in addition to the model covariates you have listed above, you will need to think of variables that may have generated the excess zeroes you saw in the outcome. Again, there are statistical tests that come with the output of these models (sometimes you might have to specify them when you execute a command) that will let you empirically decide which model is the best one for your data. There are two tests of interest: The first is the test of the coefficient on the dispersion parameter.
+
+$theta$ and the second is what is known as the Vuong test, which tells you whether the excess zeroes are generated by a separate process (i.e. whether there is, indeed, zero inflation in the outcome).
+
+In comparing the choice between ZIP and ZINB, you will again look at the test of the dispersion parameter theta.
+
+Other users can comment on the "usual" workflow, but my approach is to visualize the data and go from there. In your case, I would probably start with ZINB and run both the test on the coefficient on $theta$ and the Vuong test\_, since it's the test on the coefficient on $theta$ would tell you which one was better between ZIP and ZINB, and the Vuong test would tell you whether you should use zero-inflated models.
+
 
 ### Decision Tree
 
@@ -773,7 +811,7 @@ If you have enough data, this will indeed happen automatically. Since CARTs cons
 
 - Node impurity measures
   - Gini is intended for continuous attributes, and Entropy for attributes that occur in classes.
-  - Gini will tend to find the largest class, and entropy tends to find groups of classes that make up ~50% of the data.
+  - Gini will tend to find the largest class, and entropy tends to find groups of classes that make up \~50% of the data.
   - Gini to minimize misclassification.
   - Entropy for exploratory analysis.
   - Some studies show this doesn’t matter – these differ less than 2% of the time.
@@ -917,7 +955,7 @@ The gradient boosting algorithm has many parameters to tune.
 
 **Best Practices**
 
-[How to configure GBT](https://machinelearningmastery.com/configure-gradient-boosting-algorithm/)
+[How to configure GBT][27]
 
 - Learning rate (shrinkage parameter): The “shrinkage” parameter 0 ? v ? 1 controls the learning rate of the procedure. Empirically …, it was found that small values (v ?= 0.1) lead to much better generalization error.
 - Smaller values of v lead to larger values of M for the same training risk so that there is a tradeoff between them. … In fact, the best strategy appears to be to set v to be very small (v ? 0.1) and then choose M by early stopping.
@@ -949,12 +987,12 @@ The gradient boosting algorithm has many parameters to tune.
   - Moreover, as a byproduct, a sorted list of the relative importance of features (i.e., a feature importance list) is automatically generated for each boosted tree model.
 - Con
   - Computationally expensive
-	- Start by reducing the number of candidates through filtering. In a typical ranking setup, we need to evaluate the same trained model on multiple instances of feature vectors. For example, we need to rank ~1,000 different potential candidates for a given person and pick only the most relevant ones.
-	  - Randomly sample 0.5 ~ 0.8 of the training data to decorrelate trees and prevent overfitting.
+	- Start by reducing the number of candidates through filtering. In a typical ranking setup, we need to evaluate the same trained model on multiple instances of feature vectors. For example, we need to rank \~1,000 different potential candidates for a given person and pick only the most relevant ones.
+	  - Randomly sample 0.5 \~ 0.8 of the training data to decorrelate trees and prevent overfitting.
 - Parameters
   - Tree depth (or interaction depth), 1 makes it an addictive model and usually gives good results
   - Number of iterations, build 100 - 1000 trees
-  - shrinkage/learning rate, 0.01 ~ 0.001, smaller the slower
+  - shrinkage/learning rate, 0.01 \~ 0.001, smaller the slower
 - Pearson residual
   - The raw residual divided by the square root of the variance function $V(
 	mu)$.
@@ -1098,7 +1136,7 @@ expected = (alphas + c) / (c.sum() + alphas.sum())
 #### PyMC3
 
 A good intro to pymc3
-[Intro to PYMC3](https://juanitorduz.github.io/intro_pymc3/)
+[Intro to PYMC3][28]
 
 The toy example only allows us to get a point estimate using the posterior calculation. To get a range of estimates, we use Bayesian inference by constructing a model of the situation and then sampling from the posterior to approximate the posterior. This is implemented through Markov Chain Monte Carlo (or a more efficient variant called the No-U-Turn Sampler) in PyMC3.
 
@@ -1184,9 +1222,9 @@ $P(textNo|textSunny)=0.40$
 
 ### GAM
 
-[Stitchfix](https://multithreaded.stitchfix.com/assets/files/gam.pdf)
+[Stitchfix][29]
 
-[ML Notebook from Christoper](https://christophm.github.io/interpretable-ml-book/extend-lm.html)
+[ML Notebook from Christoper][30]
 
 ### kNN
 
@@ -1271,12 +1309,12 @@ for mean, stdev, param in zip(means, stds, params):
 
 ##### Page Ranking/Document Retrieval
 
-[Link](https://www.geeksforgeeks.org/tf-idf-model-for-page-ranking/) to incorporate
+[Link][31] to incorporate
 
 - TF-IDF model (basically a kNN)
 
   - Can be used to compare the similarity between documents and retrieve the relevant ones.
-  - We used the vector space model, which entails assigning to each executable (i.e., document) a vector of size equal to the total number of distinct n-grams (i.e., terms) in the collection. The components of each vector were the weights of the top n-grams present in the executable. For the $j$th n-gram of the ith executable, the method computes the weight $w_ij$, defined as $w_ij = tf\_ij
+  - We used the vector space model, which entails assigning to each executable (i.e., document) a vector of size equal to the total number of distinct n-grams (i.e., terms) in the collection. The components of each vector were the weights of the top n-grams present in the executable. For the $j$th n-gram of the ith executable, the method computes the weight $w\_ij$, defined as $w\_ij = tf\_ij
 	times idf\_j$
 	- $tf\_ij$, the number of times the ith n-gram appears in the jth executable
 	- $idf\_j = log
@@ -1300,7 +1338,7 @@ Let’s keep the previous example and add another variable, the income of the pe
 
 ### Permutation Importance
 
- [ Permutation Importance Code Example](https://www.kaggle.com/dansbecker/permutation-importance#Code-Example)
+ [ Permutation Importance Code Example][32]
 
 For single trees, variable importance can be determined by aggregating the improvement in the optimization objective for each predictor. For random forests, the improvement criteria (default is typically the Gini Impurity) is aggregated across the ensemble to generate an overall variable importance measure. Alternatively, predictors’ impact on the ensemble can be calculated using a permutation approach.
 
@@ -1329,7 +1367,7 @@ Often, especially in the case of GBT, two variants of the correlated variables a
 
 - Intuition
   - In words, this formula says that we want to partition the observations into K clusters such that the total within-cluster variation, summed over all K clusters, is as small as possible.
-  - To make it actionable we need to define the within-cluster variation. There are many possible ways to define this concept, but by far the most common choice involves squared [Euclidean distance](\\#distance metrics).
+  - To make it actionable we need to define the within-cluster variation. There are many possible ways to define this concept, but by far the most common choice involves squared [Euclidean distance](\\\#distance metrics).
   - Therefore,
 - Algorithm
   - Guaranteed to decrease the value of the objective function at each step.
@@ -1453,7 +1491,7 @@ Matthews's correlation coefficient. Come from bioinformatics.
 
 The coefficient takes into account true and false positives and negatives and is generally regarded as a balanced measure that can be used even if the classes are of very different sizes. The MCC is in essence a correlation coefficient between the observed and predicted binary classifications; it returns a value between −1 and +1. A coefficient of +1 represents a perfect prediction, 0 no better than random prediction and −1 indicates total disagreement between prediction and observation. The statistic is also known as the phi coefficient.
 
-[Wikipedia](https://www.wikiwand.com/en/Matthews_correlation_coefficient)
+[Wikipedia][33]
 
 - F1 Class
 - F0.5 Class good when you want to give more weight to precision
@@ -1467,7 +1505,7 @@ The coefficient takes into account true and false positives and negatives and is
 
 #### F1-score vs ROC/AUC
 
-[link](https://stackoverflow.com/questions/44172162/f1-score-vs-roc-auc)
+[link][34]
 
 - Using ROC/AUC: As a rule of thumb, if the cost of having False negative is high, we want to increase the model sensitivity (recall). We want to increase the proportion of actually positive populations that are categorized into true positive, relative to a false negative.
   - False negatives are worse
@@ -1539,292 +1577,37 @@ fracSS_{res}SS_{total}$
 
 $textAdjusted  R^2 = 1-fracfrac{SS_{res}n - k}frac{SS_{total}n - 1}$
 
-## Model Applications
-
-### Regression with Skewed Data
-
-E.g. Modeling user clicks
-
-Skewness can be detected through QQ plot and histogram
-
-Linear regression is not the right choice for your outcome, given:
-
-1. The outcome variable is not normally distributed
-2. The outcome variable being limited in the values it can take on (count data means the predicted values cannot be negative)
-3. What appears to be a high frequency of cases with 0 visits
-
-### Limited dependent variable models for count data
-
-The estimation strategy you can choose from is dictated by the "structure" of your outcome variable. That is, if your outcome variable is limited in the values it can take on (i.e. if it's a [limited dependent variable](https://en.wikipedia.org/wiki/Limited_dependent_variable)), you need to choose a model where the predicted values will fall within the possible range for your outcome. While sometimes linear regression is a good approximation for limited dependent variables (for example, in the case of binary logit/probit), oftentimes it is not. Enter [Generalized Linear Models](https://en.wikipedia.org/wiki/Generalized_linear_model). In your case, because the outcome variable is count data, you have several choices:
-
-1. Poisson model
-2. Negative Binomial model
-3. Zero Inflated Poisson (ZIP) model
-4. Zero Inflated Negative Binomial (ZINB) model
-
-The choice is usually empirically determined. I will briefly discuss choosing between these options below.
-
-Poisson vs. Negative Binomial
-
-In general, Poisson is the go-to "general workhorse" model of the 4 count data models I mentioned above. A limitation of the model is the assumption that the conditional variance = the conditional mean, which may not always be true. If your model is overdispersed (conditional variance \> conditional mean), you will need to use the Negative Binomial model instead. Fortunately, when you run the Negative Binomial, the output usually includes a statistical test for the dispersion parameter (R calls this dispersion parameter "theta ( $theta$ )," which is called "alpha" in other packages). The null hypothesis in the choice between Poisson vs. Negative Binomial is H0: $theta$ =0, while the alternative hypothesis is H1: $theta$ $neq$ 0. If the coefficient on $theta$ is significant, there is evidence of overdispersion in the model, and you would choose Negative Binomial over Poisson. If the coefficient is not statistically significant, present Poisson results.
-
-ZIP vs. ZINB
-
-One potential complication is zero inflation, which might be an issue here. This is where the zero-inflated model's ZIP and ZINB come in. Using these models, you assume that the process generating the zero values is separate from the process generating the other, non-zero values. As with before, ZINB is appropriate when the outcome has excessive zeroes and is overdispersed, while ZIP is appropriate when the outcome has excessive zeroes but conditional mean = conditional variance. For the zero-inflated models, in addition to the model covariates you have listed above, you will need to think of variables that may have generated the excess zeroes you saw in the outcome. Again, there are statistical tests that come with the output of these models (sometimes you might have to specify them when you execute a command) that will let you empirically decide which model is the best one for your data. There are two tests of interest: The first is the test of the coefficient on the dispersion parameter.
-
-$theta$ and the second is what is known as the Vuong test, which tells you whether the excess zeroes are generated by a separate process (i.e. whether there is, indeed, zero inflation in the outcome).
-
-In comparing the choice between ZIP and ZINB, you will again look at the test of the dispersion parameter theta.
-
-Other users can comment on the "usual" workflow, but my approach is to visualize the data and go from there. In your case, I would probably start with ZINB and run both the test on the coefficient on $theta$ and the Vuong test\_, since it's the test on the coefficient on $theta$ would tell you which one was better between ZIP and ZINB, and the Vuong test would tell you whether you should use zero-inflated models.
-
-### Document Retrieval
-
-- Train
-- Feature Extraction
-  - Bag of words
-  - TF-IDF (Term Frequency - Inverse Document Frequency)
-	- Log
-	  - Use log because it is not necessarily the case that more the occurrence of a term in a document more is the relevance - sub-linear function better approximates this relationship.
-	  - The base of the log does not matter. $
-	  \*fraclog\_2(x)log\_2(x+1) =
-	  \*fraclog_{10(x)}log_{10(x+1)}$
-	  - X+1 in the base so that it does not give infinite when 0.
-
-#### Notes to be incorporated
-
-- Goals
-  - Predict a list of documents ranked by relevance
-  - Additional context
-	- Introducing personalization to the problem
-- Applications
-
-  - Homepage feeds, Answers, Search, Homepage Feed, Digest Emails, Ask-to-Answer, etc.
-
-- Baseline and drawbacks, e.g ratio or difference of \\# upvotes/downvotes
-  - Time sensitivity: we can't rank answers until they receive votes
-  - Rich get richer: the more some content is upvoted, the more likely it is going to be upvoted again
-  - Joke answers: joke answers can be highly popular but don't necessarily contribute to the question page
-  - Discoverability: new experts who join Company X might not have enough followers and so their content might not be as visible, leading their answers to get lower which further prevents them from gathering followers. How to optimize ranking algorithms?
-  - Non-personalized
-  - Personalized
-- What would happen if we only optimize for CTR or upvotes?
-  - CTR measures relevancy/interestingness/popularity, and Upvotes measure quality as well as popularity. When looking at upvotes, it’s better to look at the upvotes-to-views ratio. Link not only has CTR but also upvotes so this complicates things. I will assume that users engage with Q&A most of the time and the effect of links is relatively small. Analysis
-	- Only optimizing CTR results in too much clickbait. Only optimizing upvote results in the lack of attention to some niche topics. Only optimizing the upvote-to-views ratio results in users maximize social affirmation by seeking consensus rather than discussions, which would have engaged more users. The user looks for a combination of all four things (in various weights) when coming to Company X, interestingness/affinity to the questions, a variety of topics - including the niche ones, agreeability, and vibrant discussions. All these metrics are also time sensitive so we need to adjust for that.
-  - CTR and CR may give you a good estimate of the recommender performance, but you should stay careful and keep thinking about your product. You may be running a news portal, putting the breaking news on the homepage. This might not bring you the highest possible CTR, but it maintains the quality and the feeling you and your users have about your service. Now you may put an RS there and it might start showing different content, such as yellow journalism articles or funny articles about “very fast dogs running at incredibly high speeds”. This may increase your immediate CTR by 5 times, but it will damage your image and you may lose users in the long term.
-- The ranking algorithm has the positional bias -- top answers get more click because they are easily available for the user -- how to estimate/de-bias?
-  - Problem: The important difference between personal search and web search is the private content in personal search. Users can only see and search for their content. This presents an important challenge when applying learning-to-rank techniques because collecting explicit relevance judgments becomes much harder and raters can only label their documents with their queries. Though possible, such an approach can be heavily biased by the selected raters and costly to maintain due to the fast-evolving nature of private content.
-	- Click data in personal search provides implicit but abundant user feedback. It thus becomes a natural source to improve personal search quality. However, a well-known challenge in learning from click data is its inherent bias: position bias, presentation bias, and trust bias, etc. Among them, position bias has a strong influence on users’ clicks. A prerequisite of fully leveraging the power of click data is to de-bias it. As a result, there has been a great deal of research on extracting reliable signals from click data.
-  - Solutions
-	- Existing approaches use search result randomization over a small percentage of production traffic to estimate the position bias. This is not desired because result randomization can negatively impact users’ search experience.
-	- Given top answers less weight so that it provides less information than clicks on entries that are farther down on the list. There are X answers to a certain question on Company X. How do you create a model that takes user viewing history to rank the questions? How computationally intensive is this model? [Actual implementation of the ranking algorithm, and relevant ML models. Similar to the question below.]
-  - Metrics we look at to see the effect of a new ranking algorithm?
-- What are some features to consider when building recommendations/ranking algorithms?
-  - For example, textual similarity, co-visit data, or other shared features such as topics. Other features related to the popularity or quality of the question are also taking into account. “Interestingness”
-  - One of the trickiest issues for any “related items” machine-learned model is how to tradeoff similarity vs. other relevant elements.
-- Application of ranking algorithm in Company X
-
-  - Search - maybe, global optimal ranking for all users, we can assume that the order for most “helpful” answers to a given question is independent of the user who is reading the answer.
-  - Company X Feed (Homepage) - personalized ranking
-
-	- User needs: Good and interesting questions and answers
-	- Objective function:
-	  - Stories (both Questions and Answers) that are ranked higher are topically relevant for the user.
-	  - Quality material. “Quality of the questions/answers”.
-	  - well-formatted and well-written
-	  - Actions on your “social network” should also influence the ranking. “Other users the user is following”.
-	  - Ongoing trending events. Timeliness is another element that should affect the model's decision to promote or demote a story. “What is trending/popular”.
-	- Implementation given the criteria:
-
-	  - Features corresponding to the criteria
-
-	  \*Those actions are considered and aggregated at different temporal windows and fed into the ranking algorithm.
-
-	  - Make it responsive to both user actions, impressions, and even trending events.
-
-  - Other applications: Questions, Answers, Comments, Email feeds, Related Questions, Upvotes
-
-	- Upvotes: The names that appear as having upvoted a given answer are also ranked in a way that we present at the top the ones that we consider are most informative for that given question/answer.
-
-### Recommender system
-
-#### Algorithm Overview
-
-- Classifier-based
-  - "Everything else" -- lots of the rest are attempts to fit the problem into a classifier model where you predict a "liked" category. So, logistic regression, etc.
-- Neighborhood-based
-  - User- or item-similarity-based
-	- Computer similarity of users/item
-	- Find k most similar users/item to User A
-	- Recommend users’ items/items not seen by User A
-  - Varies by choice of similarity metric
-  - Varies by choice of neighborhood size
-  - Possibly built on clusterings of users/items
-- Latent-factor models
-  - Mostly low-rank matrix factorization via ALS, SVD
-  - Vary by choice of how to compute (SGD, Lanczos, etc.)
-  - Also graphical models (restricted Boltzmann machines)
-
-#### Classification Model
-
-- Given user info, purchase history, product info, others, what’s the probability that a user will buy this product?
-- Pros: Personalized, Feature can capture context, can handle limited user history
-- Con: Feature might not be available, doesn’t provide as well as collaborative filtering methods
-
-#### Co-occurrences Matrix (Collaborative Filtering)
-
-- People who bought this also bought…
-  - (\\# items x \\# items) matrix
-	- look at diaper row to see what else people bought on the other axis
-	- Recommend other items with the largest counts
-  - Matrix must be normalized. Otherwise, very popular items will drown out other effects, and recommendations will be based on popularity rather than co-occurrence.
-  - Similarity Measures
-	- Jaccard similarity
-
-Normalizes by popularity $
-frac text{who purchased i and j} text{who purchased i or j}$
-
-- Cosine similarity
-
-  - The resulting similarity ranges from - 1 meaning exactly opposite, to 1 meaning the same, with 0 indicating orthogonality or decorrelation, while in-between values indicate intermediate similarity or dissimilarity.
-  - Text matching. the attribute vectors A and B are usually the term frequency vectors of the documents. Cosine similarity can be seen as a method of normalizing document length during the comparison.
-	- Information retrieval. the cosine similarity of two documents will range from 0 to 1 since the term frequencies (using TF–IDF weights) cannot be negative. The angle between the two term frequency vectors cannot be greater than 90°.
-
-- Implementation
-  - Given a user A bought diapers and milk, calculate personalized score of baby wipes for User A. This allows taking past purchase history into account. $S_text{User A, wipes} = frac12(S_text{wipes, diapers} + S\_text{wipes, milk})$
-  - We can further weigh recent purchases more (time decay)
-	- Sort $S\_User A, Products$ and find Products with the highest similarity.
-- Drawbacks
-  - Cold start:
-	- A user has never purchased a product in the past.
-	- A product has never been purchased with any other product.
-  - Does not utilize context (time of day), user feature (age), or product feature (content-based filtering)
-
-#### Matrix Factorization - Discover Hidden Structure
-
-- Goal
-  Use the provided rating of some users to predict the rating other users would give to these products.
-
-- Matrix Completion Problem
-
-Rating of movie v by user u: Users watch movies and rate them, but each user only watches a subset of movies.
-
-- Matrix - Rating of movie v by user u.
-  - $textRating(textuser, textrating)$ known for black cells
-	- $textRating(textuser, textrating)$ unknown for white cells
-	- Factors
-	- Describe user u with topics $L\_u = [2.5, 0, 0.8, ...]$
-	  - How much does she like action, romance, drama, …
-	- Describe movie v with topics $R\_v = [0.3, 0.01, 1.5, ...]$
-	  - How much is it action, romance, drama, …
-	- See how much these two vectors agree by $
-		textRating(u, v) = L\_u
-		times R\_v$ for a movie. Rating will be higher for a movie that better aligns with the users’ ratings for topics.
-	- If we know all users’ preferences and movie labels, combining the user preference matrix and movie matrix gives us the rating of movies by users.
-	  - However, we don’t have complete info on the L and R matrices. We estimate vectors $L\_u$ and $R\_v$ so that we can eventually estimate $textrating$. Our goal is to fill in the white blocks of the rating matrix.
-	  - Once we have a matrix with estimated user ratings by movies, we can identify the movies with the highest ratings by users.
-- Featured matrix factorization
-  - Feature-based classification approach:
-	- handle cases where we might have very limited user data.
-	- Time of day, what I just saw, user info, past purchases,...
-  - Matrix factorization approach: capture relationships between users and items and in particular learn features of those users and those items.
-	- capture groups of users who behave similarly - Women from Seattle who teach and have a baby
-  - Result
-	- Combine by weighing each model to mitigate the cold-start problem.
-	- Ratings for a new user from features only. As more user information is discovered, matrix factorization topics become more relevant so gradually assign it with more weights.
-- Performance Metrics
-  - Problem with simple classification accuracy - a fraction of items correctly classified.
-	- Might predict all as “not like” for better accuracy, but we are not interested in what a person does not like.
-	- Limited attention span (imbalanced class problem) - recommending some items that users might not like cost more than recommending no items that users might like.
-  - Precision & Recall
-	- Precision-recall curve
-	  - Best algorithm
-	  - For a given precision, want recall as large as possible (or vice versa)
-	  - One metric: largest area under the curve (AUC)
-	  - Another: set desired recall and maximize precision (Precision at K)
-
-#### Collaborative filtering - leverages the behavior of users
-
-Build a model from a user's past behavior (items previously purchased or selected and/or numerical ratings given to those items) as well as similar decisions made by other users. This model is then used to predict items that the user may have an interest in.
-
-This recommender system offers feeds items that do not appear in the user's library but are often played by other users with similar interests.
-
-Assumes that people who agreed in the past will agree in the future and that they will like similar kinds of items as they liked in the past.
-
-- Pro
-  - Does not rely on machine analyzable content - can accurately recommending complex items such as movies without requiring an "understanding" of the item itself. Cons
-  - Cold start: These systems often require a large amount of existing data on a user to make accurate recommendations.
-  - Scalability: There are millions of users and products. Thus, a large amount of computation power is often necessary to calculate recommendations.
-  - Sparsity: The number of items sold on, say, major e-commerce sites are extremely large. The most active users will only have rated a small subset of the overall database. Thus, even the most popular items have very few ratings.
-- Content-based filtering
-
-In a content-based recommender system, keywords are used to describe the items and a user profile is built to indicate the type of item this user likes. In other words, these algorithms try to recommend items that are _similar_ to those that a user liked in the past (or is examining in the present). In particular, various candidate items are compared with items previously rated by the user, and the best-matching items are recommended. To create a user profile, the system mostly focuses on two types of information:
-
-1. A model of the user's preference.
-
-2. A history of the user's interaction with the recommender system. Basically, these methods use an item profile (i.e., a set of discrete attributes and features) characterizing the item within the system. The system creates a content-based profile of users based on a weighted vector of item features. The weights denote the importance of each feature to the user and can be computed from individually rated content vectors using a variety of techniques. Sophisticated methods use machine learning techniques such as Bayesian Classifiers, cluster analysis, decision trees, and artificial neural networks to estimate the probability that the user is going to like the item. Direct feedback from a user, usually in the form of a like or dislike button, can be used to assign higher or lower weights on the importance of certain attributes (using Rocchio classification or other similar techniques). Pandora uses the properties of a song or artist (a subset of the 400 attributes provided by the Music Genome Project) to seed a "station" that plays music with similar properties. User feedback is used to refine the station's results, deemphasizing certain attributes when a user "dislikes" a particular song, and emphasizing other attributes when a user "likes" a song.
-
-- Pro
-  - Pandora needs very little information to start
-  - Con
-	- Difficult to quantify: some content types such as clothing and movies are much harder to quantify than others such as books. It is far more limited in scope - it can only make recommendations that are similar to the original seed
-	- Variety of content types: A key issue with content-based filtering is whether the system can learn user preferences from users' actions regarding one content source and use them across other content types. When the system is limited to recommending content of the same type as the user is already using, the value from the recommendation system is significantly less than when other content types from other services can be recommended. For example, recommending news articles based on browsing of news is useful, but would be much more useful when music, videos, products, discussions, etc. from different services can be recommended based on news browsing.
-- Demographic and knowledge-based recommenders
-- Hybrid Recommender Systems
-  - Implementation
-
-Hybrid approaches can be implemented in several ways: by making content-based and collaborative-based predictions separately and then combining them; by adding content-based capabilities to a collaborative-based approach (and vice versa); or by unifying the approaches into one model (see for a complete review of recommender systems).
-
-- Example - Netflix
-
-The website makes recommendations by comparing the watching and searching habits of similar users (i.e., collaborative filtering) as well as by offering movies that share characteristics with films that a user has rated highly (content-based filtering).
-
-- Data Collection Method
-
-  - Explicit collection
-	- Asking a user to rate an item on a sliding scale.
-	- Asking a user to search.
-	- Asking a user to rank a collection of items from favorite to least favorite.
-	- Presenting two items to a user and asking him/her to choose the better one of them.
-	- Asking a user to create a list of items that he/she likes.
-  - Implicit collection
-	- Observing the items that a user views in an online store.
-	- Analyzing item/user viewing times.
-	- Keeping a record of the items that a user purchases online.
-	- Obtaining a list of items that a user has listened to or watched on his/her computer.
-	- Analyzing the user's social network and discovering similar likes and dislikes.
-
-- Which system best suits Company X?
-
-  - Weighting towards content-based because no cold start and text characteristics are easily quantifiable. As a user follows and interacts with more people in the community, increase the weight of collaborative filtering. Some goals of a recommender system
-  - Diversity / Serendipity – Serendipity is a measure of "how surprising the recommendations are"
-  - Recommender persistence (users may ignore items when they are shown for the first time, for instance, because they had no time to inspect the recommendations carefully)
-  - Privacy – Many European countries have a strong culture of data privacy, and every attempt to introduce any level of user profiling can result in negative customer response.
-  - Trust – A recommender system is of little value for a user if the user does not trust the system. Trust can be built by a recommender system by explaining how it generates recommendations, and why it recommends an item.
-
-- Performance Measures
-  - A/B testing and measure results using the following metrics
-  - We approach recommendation as a ranking task, meaning that we are mainly interested in a relatively few items that we consider most relevant and are going to show to the user. This is known as top-K recommendation.
-  - Ranking
-	- Mean average precision: Average precision values at ranks of relevant documents. This assumes that users want to find the most relevant documents, and it is biased towards the top of the ranking. Calculation: It takes the mean of average precision (Ave.P) values across queries. Calculate the average precision of a query by looking at the ranks that have the relevant document, taking its corresponding precision, and averaging (divide by the total number of relevant documents found). Then, take the mean value of the average precision values.
-
-```markdown
-For instance, for a query for the first two documents where:
-Actual items are [1, 2, 3, 4, 5]
-Recommended items are [6, 4, 7, 1, 2]. AP@1 = 0
-AP@2 = 0.5
-MAP = (0 + 0.5)/2 = 0.25
-```
-
-- Also need to think about how getting the first document right is much more important than getting the second right and … Therefore, MAP might be biased because it assigns equal weight to all queries, while queries to the first couple items might in fact be more important. Normalized Discounted Cumulative Gain (Corrected the ranking bias in MAP)
-  - Assumptions: Highly relevant documents are more useful than marginally relevant document
-  - The lower the ranked position of a relevant document, the less useful it is for the user since it is less likely to be examined [Reading](https://web.stanford.edu/class/cs276/handouts/EvaluationNew-handout-6-per.pdf)
-  - Intimidating as the name might be, the idea behind NDCG is pretty simple. A recommender returns some items and we’d like to compute how good the list is. Each item has a relevance score, usually a non-negative number. That’s gain. For items, we don’t have user feedback for we usually set the gain to zero.
-  - Now we add up those scores; that’s cumulative gain. We’d prefer to see the most relevant items at the top of the list, therefore before summing the scores we divide each by a growing number (usually a logarithm of the item position) - that’s discounting - and get a DCG.
-  - DCGs are not directly comparable between users, so we normalize them. The worst possible DCG when using non-negative relevance scores is zero. To get the best, we arrange all the items in the test set in the ideal order, take the first K items, and compute DCG for them. Then we divide the raw DCG by this ideal DCG to get NDCG@K, a number between 0 and 1.
-  - You may have noticed that we denote the length of the recommendations list by K. It is up to the practitioner to choose this number. You can think of it as an estimate of how many items a user will have attention for, so values like 10 or 50 are common.
-- Diversity
-  - Intralist Similarity: the sum of pairwise similarity between two given items. Cosine similarity, Jaccard similarity coefficient.
-  - Content coverage: how well the full content space is represented to the users.
-
-E.g., [0.21 of animation, 0.1 of comedy], 0.03, 0.05, 0.56 are covered in the recommendation.
+[1]:	https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/understanding-machine-learning-theory-algorithms.pdf
+[2]:	https://www.youtube.com/watch?v=taA3r7378gU&list=PLPW2keNyw-usgvmR7FTQ3ZRjfLs5jT4BO&t=664s
+[3]:	https://www.coursera.org/lecture/deep-neural-network/rmsprop-BhJlm
+[4]:	http://cs229.stanford.edu/notes/cs229-notes4.pdf
+[5]:	https://en.wikipedia.org/wiki/Vector_Space_Model
+[6]:	https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.normalize.html#sklearn.preprocessing.normalize
+[7]:	https://towardsdatascience.com/scale-standardize-or-normalize-with-scikit-learn-6ccc7d176a02
+[8]:	https://towardsdatascience.com/understand-data-normalization-in-machine-learning-8ff3062101f0
+[9]:	https://towardsdatascience.com/handling-missing-values-in-machine-learning-part-1-dda69d4f88ca
+[10]:	https://towardsdatascience.com/handling-missing-values-in-machine-learning-part-2-222154b4b58e
+[11]:	https://medium.com/coinmonks/smote-and-adasyn-handling-imbalanced-data-set-34f5223e167
+[12]:	https://www.reed.edu/economics/parker/s11/312/notes/Notes2.pdf
+[13]:	https://stats.stackexchange.com/questions/149110/assumptions-to-derive-ols-estimator/149111#149111
+[14]:	https://stats.stackexchange.com/questions/149226/does-linear-regression-assume-all-variables-predictors-and-response-to-be-mult
+[15]:	https://stats.stackexchange.com/questions/148803/how-does-linear-regression-use-the-normal-distribution
+[16]:	https://www.wikiwand.com/en/Gauss%E2%80%93Markov_theorem
+[17]:	http://www3.amherst.edu/~fwesthoff/webpost/Old/Econ_360/Econ_360-11-14-Chap.pdf
+[18]:	https://en.wikibooks.org/wiki/Econometric_Theory/Serial_Correlation#Causes_of_Autocorrelation
+[19]:	https://www.stata.com/features/overview/fractional-polynomials/
+[20]:	http://irl.cs.brown.edu/fb.php
+[21]:	http://dept.stat.lsa.umich.edu/~kshedden/Courses/Stat504/posts/regression_overview
+[22]:	https://stats.idre.ucla.edu/stata/webbooks/logistic/chapter3/lesson-3-logistic-regression-diagnostics/
+[23]:	https://www.statsmodels.org/stable/mixed_linear.html
+[24]:	https://docs.google.com/document/d/1e9dfm3-JHy9JE5eRrcW1YUVo09ORPjnnozq05i_aBZ4/edit#
+[25]:	https://en.wikipedia.org/wiki/Limited_dependent_variable
+[26]:	https://en.wikipedia.org/wiki/Generalized_linear_model
+[27]:	https://machinelearningmastery.com/configure-gradient-boosting-algorithm/
+[28]:	https://juanitorduz.github.io/intro_pymc3/
+[29]:	https://multithreaded.stitchfix.com/assets/files/gam.pdf
+[30]:	https://christophm.github.io/interpretable-ml-book/extend-lm.html
+[31]:	https://www.geeksforgeeks.org/tf-idf-model-for-page-ranking/
+[32]:	https://www.kaggle.com/dansbecker/permutation-importance#Code-Example
+[33]:	https://www.wikiwand.com/en/Matthews_correlation_coefficient
+[34]:	https://stackoverflow.com/questions/44172162/f1-score-vs-roc-auc

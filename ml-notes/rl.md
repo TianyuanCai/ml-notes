@@ -14,10 +14,12 @@ draft: true
 
 Epsilon Greedy
 
-[Thompson Sampling](https://web.stanford.edu/~bvr/pubs/TS_Tutorial.pdf)
+[Thompson Sampling][1]
 
 ## Algorithm Comparison
 
-Temporal Difference -> Monte Carlo simulations
+Temporal Difference -\> Monte Carlo simulations
 
-## Product Applications
+## Applications
+
+[1]:	https://web.stanford.edu/~bvr/pubs/TS_Tutorial.pdf
