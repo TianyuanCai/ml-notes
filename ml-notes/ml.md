@@ -674,7 +674,7 @@ Questions along the line of – knowing the differences in categories they belon
   - Similar to Logistic regression and probit regression.
   - These other methods are preferable in applications where it is not reasonable to assume that the independent variables are normally distributed, which is a fundamental assumption of the LDA method.
 
-LDA is also closely related to principal component analysis (PCA) and factor analysis in that they both look for linear combinations of variables that best explain the data.[4] LDA explicitly attempts to model the difference between the classes of data. PCA, in contrast, does not consider any difference in class, and factor analysis builds the feature combinations based on differences rather than similarities. Discriminant analysis is also different from factor analysis in that it is not an interdependence technique: a distinction between independent variables and dependent variables (also called criterion variables) must be made.
+LDA is also closely related to principal component analysis (PCA) and factor analysis in that they both look for linear combinations of variables that best explain the data.[4][24] LDA explicitly attempts to model the difference between the classes of data. PCA, in contrast, does not consider any difference in class, and factor analysis builds the feature combinations based on differences rather than similarities. Discriminant analysis is also different from factor analysis in that it is not an interdependence technique: a distinction between independent variables and dependent variables (also called criterion variables) must be made.
 
 **Assumptions**
 
@@ -714,7 +714,7 @@ _Test by_
   - Variance Inflation Factor $textVIF = frac11 - R\_{j^2}$. The VIF equals 1 when the vector $X\_j$ is orthogonal to each column of the design matrix for the regression of Xj on the other covariates. With VIF \> 10 there is an indication that multicollinearity may be present; with VIF \> 100 there is certainly multicollinearity among the variables.
   - $R\_j^2$ is the multiple $R^2$ for the regression of $X\_j$ on the other covariates (a regression that does not involve the response variable Y). This identity separates the influences of several distinct factors on the variance of the coefficient estimate
 
-- [Version 2][24]
+- [Version 2][25]
 
 TODO V2 to be combined 
 
@@ -755,7 +755,7 @@ Linear regression is not the right choice for your outcome, given:
 
 **Limited dependent variable models for count data**
 
-The estimation strategy you can choose from is dictated by the "structure" of your outcome variable. That is, if your outcome variable is limited in the values it can take on (i.e. if it's a [limited dependent variable][25]), you need to choose a model where the predicted values will fall within the possible range for your outcome. While sometimes linear regression is a good approximation for limited dependent variables (for example, in the case of binary logit/probit), oftentimes it is not. Enter [Generalized Linear Models][26]. In your case, because the outcome variable is count data, you have several choices:
+The estimation strategy you can choose from is dictated by the "structure" of your outcome variable. That is, if your outcome variable is limited in the values it can take on (i.e. if it's a [limited dependent variable][26]), you need to choose a model where the predicted values will fall within the possible range for your outcome. While sometimes linear regression is a good approximation for limited dependent variables (for example, in the case of binary logit/probit), oftentimes it is not. Enter [Generalized Linear Models][27]. In your case, because the outcome variable is count data, you have several choices:
 
 1. Poisson model
 2. Negative Binomial model
@@ -955,7 +955,7 @@ The gradient boosting algorithm has many parameters to tune.
 
 **Best Practices**
 
-[How to configure GBT][27]
+[How to configure GBT][28]
 
 - Learning rate (shrinkage parameter): The “shrinkage” parameter 0 ? v ? 1 controls the learning rate of the procedure. Empirically …, it was found that small values (v ?= 0.1) lead to much better generalization error.
 - Smaller values of v lead to larger values of M for the same training risk so that there is a tradeoff between them. … In fact, the best strategy appears to be to set v to be very small (v ? 0.1) and then choose M by early stopping.
@@ -1136,7 +1136,7 @@ expected = (alphas + c) / (c.sum() + alphas.sum())
 #### PyMC3
 
 A good intro to pymc3
-[Intro to PYMC3][28]
+[Intro to PYMC3][29]
 
 The toy example only allows us to get a point estimate using the posterior calculation. To get a range of estimates, we use Bayesian inference by constructing a model of the situation and then sampling from the posterior to approximate the posterior. This is implemented through Markov Chain Monte Carlo (or a more efficient variant called the No-U-Turn Sampler) in PyMC3.
 
@@ -1222,9 +1222,9 @@ $P(textNo|textSunny)=0.40$
 
 ### GAM
 
-[Stitchfix][29]
+[Stitchfix][30]
 
-[ML Notebook from Christoper][30]
+[ML Notebook from Christoper][31]
 
 ### kNN
 
@@ -1309,7 +1309,7 @@ for mean, stdev, param in zip(means, stds, params):
 
 ##### Page Ranking/Document Retrieval
 
-[Link][31] to incorporate
+[Link][32] to incorporate
 
 - TF-IDF model (basically a kNN)
 
@@ -1338,7 +1338,7 @@ Let’s keep the previous example and add another variable, the income of the pe
 
 ### Permutation Importance
 
- [ Permutation Importance Code Example][32]
+ [ Permutation Importance Code Example][33]
 
 For single trees, variable importance can be determined by aggregating the improvement in the optimization objective for each predictor. For random forests, the improvement criteria (default is typically the Gini Impurity) is aggregated across the ensemble to generate an overall variable importance measure. Alternatively, predictors’ impact on the ensemble can be calculated using a permutation approach.
 
@@ -1491,7 +1491,7 @@ Matthews's correlation coefficient. Come from bioinformatics.
 
 The coefficient takes into account true and false positives and negatives and is generally regarded as a balanced measure that can be used even if the classes are of very different sizes. The MCC is in essence a correlation coefficient between the observed and predicted binary classifications; it returns a value between −1 and +1. A coefficient of +1 represents a perfect prediction, 0 no better than random prediction and −1 indicates total disagreement between prediction and observation. The statistic is also known as the phi coefficient.
 
-[Wikipedia][33]
+[Wikipedia][34]
 
 - F1 Class
 - F0.5 Class good when you want to give more weight to precision
@@ -1505,7 +1505,7 @@ The coefficient takes into account true and false positives and negatives and is
 
 #### F1-score vs ROC/AUC
 
-[link][34]
+[link][35]
 
 - Using ROC/AUC: As a rule of thumb, if the cost of having False negative is high, we want to increase the model sensitivity (recall). We want to increase the proportion of actually positive populations that are categorized into true positive, relative to a false negative.
   - False negatives are worse
@@ -1600,14 +1600,15 @@ $textAdjusted  R^2 = 1-fracfrac{SS_{res}n - k}frac{SS_{total}n - 1}$
 [21]:	http://dept.stat.lsa.umich.edu/~kshedden/Courses/Stat504/posts/regression_overview
 [22]:	https://stats.idre.ucla.edu/stata/webbooks/logistic/chapter3/lesson-3-logistic-regression-diagnostics/
 [23]:	https://www.statsmodels.org/stable/mixed_linear.html
-[24]:	https://docs.google.com/document/d/1e9dfm3-JHy9JE5eRrcW1YUVo09ORPjnnozq05i_aBZ4/edit#
-[25]:	https://en.wikipedia.org/wiki/Limited_dependent_variable
-[26]:	https://en.wikipedia.org/wiki/Generalized_linear_model
-[27]:	https://machinelearningmastery.com/configure-gradient-boosting-algorithm/
-[28]:	https://juanitorduz.github.io/intro_pymc3/
-[29]:	https://multithreaded.stitchfix.com/assets/files/gam.pdf
-[30]:	https://christophm.github.io/interpretable-ml-book/extend-lm.html
-[31]:	https://www.geeksforgeeks.org/tf-idf-model-for-page-ranking/
-[32]:	https://www.kaggle.com/dansbecker/permutation-importance#Code-Example
-[33]:	https://www.wikiwand.com/en/Matthews_correlation_coefficient
-[34]:	https://stackoverflow.com/questions/44172162/f1-score-vs-roc-auc
+[24]:	http://cs229.stanford.edu/notes/cs229-notes4.pdf
+[25]:	https://docs.google.com/document/d/1e9dfm3-JHy9JE5eRrcW1YUVo09ORPjnnozq05i_aBZ4/edit#
+[26]:	https://en.wikipedia.org/wiki/Limited_dependent_variable
+[27]:	https://en.wikipedia.org/wiki/Generalized_linear_model
+[28]:	https://machinelearningmastery.com/configure-gradient-boosting-algorithm/
+[29]:	https://juanitorduz.github.io/intro_pymc3/
+[30]:	https://multithreaded.stitchfix.com/assets/files/gam.pdf
+[31]:	https://christophm.github.io/interpretable-ml-book/extend-lm.html
+[32]:	https://www.geeksforgeeks.org/tf-idf-model-for-page-ranking/
+[33]:	https://www.kaggle.com/dansbecker/permutation-importance#Code-Example
+[34]:	https://www.wikiwand.com/en/Matthews_correlation_coefficient
+[35]:	https://stackoverflow.com/questions/44172162/f1-score-vs-roc-auc
