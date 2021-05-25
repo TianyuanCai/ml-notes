@@ -84,17 +84,49 @@ I found this [docker container][18] to give a good starter project template. Cre
 **Here is how to set it up. **
 
 1. Install Docker for Mac [Docker for Mac][19]
-2. In a `system`-level virtual/conda environment `pip install cookiecutter`
+2. Optional – if you plan to use GPU, install `nvidia-docker`. Note that it cannot be installed on Mac. Here is a helpful [guide][20].
+```bash
+# a clean installation of docker ce
+sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo rm -rf /var/lib/docker
+sudo apt-get autoclean
+sudo apt-get update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo systemctl status docker
+
+# use docker without sudo
+sudo usermod -aG docker ${USER}
+su - ${USER}
+id -nG
+
+# install nvidia-docker
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey |   sudo apt-key add -
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt-get update
+sudo apt-get install -y nvidia-docker2
+sudo pkill -SIGHUP dockerd
+sudo docker run --runtime=nvidia --rm nvidia/cuda:10.1-base nvidia-smi
+```
+4. In a `system`-level virtual/conda environment `pip install cookiecutter`
 	1. Cookie cutter is a package that makes it easy to create templates for different projects. Customization variables such as `{{ project_name }}` can be defined in the templates to allow customized variable names for each project.
-3. Enter your git repository folder, where all of your other projects are located.
-4. Use cookie cutter module installed just now to setup the project `cookiecutter git@github.com:docker-science/cookiecutter-docker-science.git`. It will be asked as series of questions to customize your project.
+5. Enter your git repository folder, where all of your other projects are located.
+6. Use cookie cutter module installed just now to setup the project `cookiecutter git@github.com:docker-science/cookiecutter-docker-science.git`. It will be asked as series of questions to customize your project.
 	1. You will be asked a series of questions to help setup the environment. Your answers to this question will be used to configure a range of settings from the name of the project folder to the directories.
 	2. The options provided in the brackets are the default. If you choose to go as a default, simply press ENTER in the command line.
-	3. The [base][20] docker [image][21] used for this project is a good default.
-5. After answering all the questions, enter the newly created project folder and type `make create-container` to start the development environment. 
+	3. The [base][21] docker [image][22] used for this project is a good default.
+7. After answering all the questions, the new project folder will be created. 
+8. Start the docker app on your current host. 
+9. enter the newly created project folder and type `make init` to setup up the container, followed by `make create-container` to start the development environment. 
 	1. The first time you set up your environment, you will see various packages being downloaded. This is because Docker needs to install all the necessary packages to set up a separate operating system within your computer.
 	2. The default port for notebook is `8888`. You can override with `make create-container JUPYTER_HOST_PORT=9900`
-6. `docker ps` to view the host port that is being forwarded in order to access Jupyter notebook.
+10. After finishing `make create-container` for the first time, you can enter the container again with `make start-container` in the project directory.
+11. `docker ps` to view the host port that is being forwarded in order to access Jupyter notebook.
 
 [1]:	https://ohmyz.sh
 [2]:	https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories
@@ -115,5 +147,6 @@ I found this [docker container][18] to give a good starter project template. Cre
 [17]:	https://drivendata.github.io/cookiecutter-data-science/#directory-structure
 [18]:	https://github.com/docker-science/cookiecutter-docker-science
 [19]:	https://store.docker.com/editions/community/docker-ce-desktop-mac
-[20]:	https://docs.docker.com/develop/develop-images/baseimages/
-[21]:	https://hub.docker.com/r/manifoldai/orbyter-ml-dev
+[20]:	https://medium.com/@linhlinhle997/how-to-install-docker-and-nvidia-docker-2-0-on-ubuntu-18-04-da3eac6ec494
+[21]:	https://docs.docker.com/develop/develop-images/baseimages/
+[22]:	https://hub.docker.com/r/manifoldai/orbyter-ml-dev
